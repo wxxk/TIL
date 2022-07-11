@@ -18,10 +18,12 @@
 
 ---
 
-1. [Python이란](python.md)
-2. [Python 개발환경](python2.md)
+1. [Python이란](Python.md)
+
+2. [Python 개발환경](Python2.md)
 
 3. [변수](variable.md)
 
-4. [Python 기본 자료형](data_type)
-5. [자료형 변환](conversion)
+4. [Python 기본 자료형](data_type.md)
+
+5. [자료형 변환](conversion.md)
