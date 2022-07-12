@@ -19,21 +19,25 @@
 ---
 
 1. [Python이란](python.md)
+
 2. [Python 개발환경](python2.md)
+
 3. [변수](variable.md)
+
 4. [Python 기본 자료형](data_type)
+
 5. [자료형 변환](conversion)
 
 6. [컨테이너 정의](container.md)
 
- - 스퀀스형 컨테이너
+    - 스퀀스형 컨테이너
+      - [리스트](list.md)
+      - [튜플](tuple.md)
+      - [레인지](range.md)
 
-   - [리스트](list.md)
 
-   - [튜플](tuple.md)
-   - [레인지](range.md)
-- 비스퀀스형 컨테이너
-  - [세트](set.md)
-  - [딕셔너리](dict.md)
+   - 비스퀀스형 컨테이너
+     - [세트](set.md)
+     - [딕셔너리](dict.md)
 
 
