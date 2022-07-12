@@ -20,7 +20,7 @@
 
 ### 목차
 
-1. [Python이란](python.md)
+1. [Python이란](basic.md)
 
 2. [Python 개발환경](environment.md)
 
