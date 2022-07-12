@@ -31,7 +31,7 @@
 5. [자료형 변환](conversion.md)
 
 6. [컨테이너 정의](container.md)
-    - 스퀀스형 컨테이너
+    - 시퀀스형 컨테이너
       - [리스트](list.md)
       - [튜플](tuple.md)
       - [레인지](range.md)
