@@ -66,6 +66,7 @@
 
   ```python
   value = num if num >= 0 else - num
+  # 참일 경우 num을 출력, 거짓일 경우 -num을 출력
   ```
 
   - 예시
