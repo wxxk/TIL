@@ -1,5 +1,8 @@
-print(sum)
-print(sum(range(2)))
-sum = 5
-print(sum)
-print(sum(range(2)))
+a = 10
+
+def test():
+    a = 20
+    print(a)
+
+test()
+print(a)
