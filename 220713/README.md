@@ -11,7 +11,7 @@
 - [함수 응용](apply.md)
 - [예제](예제)
 
-- [실습][실습]
+- [실습](실습)
 
 ### 정의
 
@@ -76,4 +76,3 @@ import statistics
 values = [100, 75, 85, 90, 65, 95]
 statistics.pstdev(values)
 ```
-
