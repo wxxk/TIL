@@ -245,3 +245,16 @@ a = bool(int(input()))
 
 
 ### F 스트링
+
+
+
+---
+
+
+
+### 3항 연산
+
+가장 큰 값 : (a if a>b else b) if ((a if a>b else b)>c) else c
+
+가장 작은 값 : (a if a<b else b) if ((a if a<b else b)<c) else c
+
