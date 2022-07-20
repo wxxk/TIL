@@ -1,12 +1,18 @@
+d=[]
+for i in range(20) :
+    d.append([])
+    for j in range(20) : 
+        d[i].append(0)
+
 n = int(input())
-result = ''
-
-d = [[0 for j in range(20)] for i in range(20)]
-
 for k in range(n):
-    a, b = map(int, input().split())
-    d[a-1][b-1] += 1
-    for i in range(20):
-        result = d[i]
-        
-        print(' '.join(map(str, result)))
+    x, y = map(int, input().split())
+    d[x][y] = 1
+
+for i in range(1, 20) :
+    for j in range(1, 20) : 
+        print(d[i][j], end=' ')
+    # 한 가로줄의 상황이 모두 출력되면
+    # 다음 가로줄의 상황을 출력하기 위해 
+    # 다음줄로 넘어간다
+    print()
