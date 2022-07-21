@@ -1,8 +1,2 @@
-a = 10
-
-def test():
-    a = 20
-    print(a)
-
-test()
-print(a)
+zeros_tuple = (0,) * 10
+print(zeros_tuple)

@@ -258,3 +258,84 @@ a = bool(int(input()))
 
 가장 작은 값 : (a if a<b else b) if ((a if a<b else b)<c) else c
 
+
+
+---
+
+
+
+### 파이썬의 Asterisk(*) 이해하기
+
+1. 곱셈 및 거듭제곱 연산으로 사용할 때
+
+```python
+>>> 2 * 3
+6
+>>> 2 ** 3
+8
+>>> 1.414 * 1.414
+1.9999999999999997
+>>> 1.414 ** 1.414
+1.6320575353248798
+```
+
+2. 리스트형 컨테이너 타입의 데이터 반복을 확장하고자 할 때
+
+```python
+# 길이 100의 제로값 리스트 초기화
+zeros_list = [0] * 100
+
+# 길이 100의 제로값 튜플 선언
+zeros_tuple = (0,) * 100
+```
+
+3. 가변인자를 사용하고자 할 때
+
+> 들어오는 인자의 갯수를 모를 때
+>
+> 그 어떤 인자라도 모두 받아서 처리 해야할 때
+
+- positional arguments : 위치에 따라 정해지는 인자(생략 불가능 / 정해진 갯수대로 정해진 위치에 인자를 전달)
+- keyword arguments : 키워드(이름)을 가진 인자(함수 선언시 디폴트값 설정 가능 / 생략시 디폴트 값이 들어감)
+
+```python 
+# 2~4명의 주자로 이루어진 달리기 대회 랭킹을 보여주는 함수
+def save_ranking(first, second, third=None, fourth=None):
+    # first, second = positional arguments
+    # third, fourth = keyword arguments
+    rank = {}
+    rank[1], rank[2] = first, second 
+    rank[3] = third if third is not None else 'Nobody'
+    rank[4] = fourth if fourth is not None else 'Nobody'
+    print(rank)
+    
+    # positional arguments 2개 전달
+	save_ranking('ming', 'alice')
+	# positional arguments 2개와 keyword argument 1개 전달
+	save_ranking('alice', 'ming', third='mike')
+	# positional arguments 2개와 keyword arguments 2개 전달 (단, 하나는 positional argument 형태로 전달)
+	save_ranking('alice', 'ming', 'mike', fourth='jim')
+```
+
+4. 컨테이너 타입의 데이터를 Unpacking 할 때
+
+> list나 tup;e 또는 dict 형태의 데이터를 가짐
+>
+> 어떤 함수가 가변인자를 받는 경우 사용 가능
+
+```python
+from functools import reduce
+
+primes = [2, 3, 5, 7, 11, 13]
+
+def product(*numbers):
+    p = reduce(lambda x, y: x * y, numbers)
+    return p
+
+product(*primes)
+# 30030
+
+product(primes)
+# [2, 3, 5, 7, 11, 13]
+```
+
