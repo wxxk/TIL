@@ -107,18 +107,18 @@ count(*)
 ### 5. 음주(is_drinking)를 하는 사람(1)의 허리 둘레(waist)를 높은 순으로 5명 출력하시오.
 
 ```sql
-SELECT * FROM healthcare WHERE is_drinking = 1 and waist != '' ORDER BY waist DESC LIMIT 5;
+SELECT waist FROM healthcare WHERE is_drinking = 1 and waist != '' ORDER BY waist DESC LIMIT 5;
 
 ```
 
 ```
-id      sido  gender  age  height  weight  waist  va_lftREAL  va_right  blood_e  smoking  is_drinking
-------  ----  ------  ---  ------  ------  -----  ----------  --------  -------  -------  -----------
-993531  48    1       9    170     130     146.0  0.6         0.8       150      3        1
-87897   48    1       10   170     130     142.0  0.6         0.8       140      1        1
-826643  48    1       9    180     135     141.4  1.2         0.9       136      3        1
-567314  26    1       11   170     110     140.0  0.3         0.6       125      3        1
-611146  36    1       12   165     120     140.0  0.4         0.8       141      3        1
+waist
+-----
+146.0
+142.0
+141.4
+140.0
+140.0
 ```
 
 
