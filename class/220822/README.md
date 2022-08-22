@@ -10,15 +10,21 @@
 
 - INNER JOIN : 조건에 일치하는(동일한 값이 있는) 행만 반환
 
+  ![화면 캡처 2022-08-22 182041](README.assets/화면 캡처 2022-08-22 182041.png)
+
   ```sql
   SELECT *
   FROM 테이블1 JOIN 테이블 2
   	ON 테이블11.칼럼 = 테이블2.칼럼
   ```
 
+
+
 - OUTER JOIN : 동일한 값이 없는 데이터도 반환할 때 사용
 
   - 기준이 되는 테이블에 따라 LEFT/RIGHT/FULL을 지정
+
+  ![2](README.assets/2.png)
 
   ```sql
   SELECT *
