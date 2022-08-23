@@ -27,7 +27,7 @@
 | [1일](./class/220801/README.md)<br/>스택, 큐 | [2일](./class/220802/README.md)<br/>힙, 셋 | 3[일](./class/220803/README.md)<br/>이차원 리스트 | 4[일](./class/220804/README.md)<br/>이차원 리스트 순회 |                                           |
 | [8일](./class/220808/README.md)<br/>완전탐색 | [9일](./class/220809/README.md)<br/>그래프 | [10일](./class/220810/README.md)<br/>깊이우선탐색 | [12일](./class/220811/README.md)<br/>코딩 테스트 준비  |                                           |
 |                                              | [16일](./class/220816/README.md)<br/>DB    | [17일](./class/220817/README.md)<br/>DB_2         | [18일](./class/220818/README.md)<br/>DB_3              | [19일](./class/220819/README.md)<br/>DB_4 |
-| [22일](./class/220822/README.md)<br/>DB_5    |                                            |                                                   |                                                        |                                           |
+| [22일](./class/220822/README.md)<br/>DB_5    | [23일](./class/220823/README.md)<br/>DB_5  |                                                   |                                                        |                                           |
 |                                              |                                            |                                                   |                                                        |                                           |
 
 ---
