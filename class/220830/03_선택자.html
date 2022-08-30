@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS DEMO</title>
+  <style>
+    /* universal 모든 태그들을 선택 */
+    * {
+      color : green;
+    }
+
+    /* type selector 타입을 입력하고 작성 */
+    li {
+      color: blue;
+    }
+    
+    /* id selector */
+    #special {
+      color: pink
+    }
+    
+    /* class .을 이용해서 작성 */
+    /* 기본 값이 한 라인을 다 자지(block) */
+    .red {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+    }
+
+    /* state selector */
+    button:hover {
+      color: red;
+      background-color: green;
+    }
+
+    /* 속성 선택자 */
+    /* 속성 값이 herf 있는 태그들만 보라색 */
+    a[href] {
+      color: purple;
+    }
+  </style>
+</head>
+
+<body>
+  <ol>
+    <li id="special">First</li>
+    <li>Second</li>
+  </ol>
+  <h1 id="special">Hello</h1>
+  <button>Button 1</button>
+  <button>Button 2</button>
+  <div class="red"><button></button></div>
+  <div class="blue"></div>
+  <a href="naver.com">NAVER</a>
+  <a href="googlenaver.com">Google</a>
+  <a>Empty</a>
+</body>
+</html>
