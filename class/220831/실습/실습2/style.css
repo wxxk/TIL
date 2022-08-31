@@ -1,0 +1,23 @@
+.items {
+  justify-content: center;
+  display: flex;
+}
+
+.item {
+  width: 400px;
+  height: auto;
+}
+
+.item img {
+  width: 100%;
+  border-radius: 1%;
+}
+
+.com, .pro, .pri, .grade {
+  margin: 5px;
+}
+
+.com {color: gray;}
+.pro {font-size: 18px; font-weight: bold;}
+.pri {font-size: 18px; font-weight: bolder;} 
+.grade{font-weight: bold;}

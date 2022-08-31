@@ -1,0 +1,30 @@
+.title {
+  text-align: center;
+}
+.sub {
+  font-size: 15px;
+}
+
+.items {
+  display : flex;
+  margin: 20px;
+}
+
+.item {
+  width: 300px;
+  height: auto;
+  margin: 20px;
+}
+
+.item img {
+  width: 100%;
+  border-radius: 5%;
+}
+
+.ins, .gu, .ex {
+  margin: 10px;
+}
+
+.ins {font-size: 13px;}
+.gu {font-size: 15px;}
+.ex {font-size: 11px; color: gray;}
