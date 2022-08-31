@@ -1,0 +1,25 @@
+span, div {
+  background: yellow;
+  border: 1px solid red;
+}
+
+.top {
+  position: relative;
+  top: 5px;
+  z-index: 1;
+}
+
+.right {
+  position: relative;
+  right: 5px;
+}
+
+.bottom {
+  position: relative;
+  bottom: 5px;
+}
+
+.left {
+  position: relative;
+  left: 5px;
+}

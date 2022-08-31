@@ -1,0 +1,25 @@
+.flex-container{
+  display: flex;
+  margin: 5px;
+  width: 200px;
+  border:1px solid lightgray;
+  border-radius: 10px;
+  background-color: aliceblue;
+  font-size: 24px;
+}
+.flex-container.nowrap{flex-wrap: nowrap; margin-right:50px}
+.flex-container.wrap{flex-wrap: wrap;}
+.flex-container.wrap-reverse{flex-wrap: wrap-reverse;}
+.flex-item{
+  min-width: 50px;
+  height: 50px;
+  margin: 5px;
+  text-align: center;
+  color: white;
+}
+.color-red{ background-color: darksalmon; }
+.color-blue{ background-color: dodgerblue; }
+.color-green{ background-color: forestgreen; }
+.color-yellow{ background-color: gold; }
+.color-pupple{ background-color: rebeccapurple; }
+.color-orange{ background-color: orange; }

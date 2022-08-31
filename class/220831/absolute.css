@@ -1,0 +1,17 @@
+#absolute {
+  background: yellow;
+  position: absolute;
+  right: 0;
+}
+
+#parent {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: skyblue;
+}
+
+#child {
+  position: absolute;
+  right: 0;
+}
