@@ -1,0 +1,19 @@
+.logo {
+  height: 64px;
+}
+
+@media screen and (min-width: 992px) {
+  .community__cards {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .community__cards {
+    display: block;
+  }
+
+  .community__board {
+    display: none;
+  }
+}

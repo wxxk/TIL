@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="logo.png" alt="" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="community.html">Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Modal -->
+  <div class="modal" tabindex="-1"  id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Visual-->
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="height: 600px;">
+    <div class="carousel-inner" style="height: 600px;">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="https://i.pinimg.com/564x/23/7a/b9/237ab9a429e95b32b836668a841e9697.jpg" class="d-block w-100 img-fluid" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="https://i.pinimg.com/564x/ad/5f/5f/ad5f5fa6d557fc433da75975d674fb21.jpg" class="d-block w-100 img-fluid" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.pinimg.com/564x/24/05/f5/2405f5d1220d45fef53df0bfe804e104.jpg" class="d-block w-100 img-fluid" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Card -->
+  <div class="container">
+    <div class="h2 text-center py-4 m-0 fw-bolder">Boxoffice</div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+      <div class="col py-3">
+        <div class="card">
+          <img src="movie1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <img src="movie2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <img src="movie3.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <img src="movie4.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <img src="movie5.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <img src="movie6.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="text-center my-5">
+      <p>Web-bootstrp PJT, by 조병진, 이상욱</p>
+  </footer>
+
+  
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+</body>
+</html>
