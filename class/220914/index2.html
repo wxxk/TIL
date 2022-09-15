@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script>
+  <!-- Fontawesome -->
+  <script src="https://kit.fontawesome.com/3ef4088aa9.js" crossorigin="anonymous" defer></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-light nav">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" width="150px" height="50px" alt="logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              영화
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">인기</a></li>
+              <li><a class="dropdown-item" href="#">현재 상영 중</a></li>
+              <li><a class="dropdown-item" href="#">개봉 예정</a></li>
+              <li><a class="dropdown-item" href="#">높은 평점</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                TV 프로그램
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">인기</a></li>
+              <li><a class="dropdown-item" href="#">오늘 방영</a></li>
+              <li><a class="dropdown-item" href="#">TV 방영 중</a></li>
+              <li><a class="dropdown-item" href="#">높은 평점</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+        </ul>
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><i class="fa-solid fa-plus fa-lg"></i></li>
+          <li class="nav-item"><button>KO</button></li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a>
+          </li>
+          <li class="nav-item">회원가입</li>
+          <li class="nav-item"><i class="fa-solid fa-magnifying-glass fa-lg"></i></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container">
+        <div class="collapse navbar-collapse header__nav" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                개요
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">메인</a></li>
+                <li><a class="dropdown-item" href="#">충연진 & 제작진</a></li>
+                <li><a class="dropdown-item" href="#">Watch Now</a></li>
+                <li><a class="dropdown-item" href="#">수정내역</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                미디어
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">배경</a></li>
+                <li><a class="dropdown-item" href="#">포스터</a></li>
+                <li><a class="dropdown-item" href="#">동영상</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                팬덤
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">토론 내역</a></li>
+                <li><a class="dropdown-item" href="#">리뷰</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                공유
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">공유 링크</a></li>
+                <li><a class="dropdown-item" href="#">Facebook</a></li>
+                <li><a class="dropdown-item" href="#">Tweet</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="banner">
+      <div class="container d-flex my-5">
+        <div class="banner__img w-25">
+          <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/voddFVdjUoAtfoZZp2RUmuZILDI.jpg" alt="" />
+          <div class="banner__img-offer d-flex justify-content-center align-items-center">
+            <img src="https://www.themoviedb.org/t/p/original/t2yyOv40HZeVlLjYsCsPHnWLk4W.jpg" alt="" />
+            <div class="banner__img-text">              
+              <span>Now Streaming</span><br />
+              Watch Now
+            </div>
+          </div>
+        </div>
+        <div class="banner__content w-75 ms-5">
+          <h1 class="banner__title">스파이더맨: 노 웨이 홈(2021)</h1>
+          <p class="banner__description"><span>12</span> 2021/12/15 (KR) • 액션, 모험, SF • 2h 28m</p>
+          <span class="banner__icon d-block">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-bookmark"></i>
+            <i class="fa-solid fa-star"></i>
+            <span><i class="fa-solid fa-play"></i> 트레일러 재생</span>
+          </span>
+          <p class="fst-italic my-3">무너진 세계, 차원을 뛰어넘는 위협</p>
+          <div class="banner__text">
+            <h3>개요</h3>
+            <p>미스테리오의 계략으로 세상에 정체가 탄로난 스파이더맨 피터 파커는 하루 아침에 평범한 일상을 잃게 된다. 문제를 해결하기 위해 닥터 스트레인지를 찾아가 도움을 청하지만 뜻하지 않게 멀티버스가 열리면서 각기 다른 차원의 불청객들이 나타난다. 닥터 옥토퍼스를 비롯해 스파이더맨에게 깊은 원한을 가진 숙적들의 강력한 공격에 피터 파커는 사상 최악의 위기를 맞게 되는데…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modal -->
+  <div class="modal" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- main -->
+  <div class="container my-5">
+
+    <div class="row">
+
+      <div class="col-9">
+        <h4 class="fw-bolder">주요 출연진</h4>
+        <!-- 출연진 -->
+        <div class="row gx-2">
+
+          <div class="col-2">
+            <div class="card h-100">
+              <img src="https://www.themoviedb.org/t/p/w138_and_h175_face/bBRlrpJm9XkNSg0YT5LCaxqoFMX.jpg" class="card-img-top img-fluid" alt="..." style="height: 200px;">
+              <div class="card-body p-2">
+                <h6 class="card-text fw-bolder">Tom Holland</h6>
+                <p class="card-text character">Peter Parker / Spider-Man</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card h-100">
+              <img src="https://www.themoviedb.org/t/p/w138_and_h175_face/6TE2AlOUqcrs7CyJiWYgodmee1r.jpg" class="card-img-top img-fluid" alt="..." style="height: 200px;">
+              <div class="card-body p-2">
+                <h6 class="card-text fw-bolder">Zendaya</h6>
+                <p class="card-text character">Michelle 'MJ' Jones</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card h-100">
+              <img src="https://www.themoviedb.org/t/p/w138_and_h175_face/fBEucxECxGLKVHBznO0qHtCGiMO.jpg" class="card-img-top img-fluid" alt="..." style="height: 200px;">
+              <div class="card-body p-2">
+                <h6 class="card-text fw-bolder">Benedict Cumberbatch</h6>
+                <p class="card-text character">Stephen Strange / Doctor Strange</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card h-100">
+              <img src="https://www.themoviedb.org/t/p/w138_and_h175_face/53YhaL4xw4Sb1ssoHkeSSBaO29c.jpg" class="card-img-top img-fluid" alt="..." style="height: 200px;">
+              <div class="card-body p-2">
+                <h6 class="card-text fw-bolder">Jacob Batalon</h6>
+                <p class="card-text character">Ned Leeds</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card h-100">
+              <img src="https://www.themoviedb.org/t/p/w138_and_h175_face/8MtRRnEHaBSw8Ztdl8saXiw1egP.jpg" class="card-img-top img-fluid" alt="..." style="height: 200px;">
+              <div class="card-body p-2">
+                <h6 class="card-text fw-bolder">Jon Favreau</h6>
+                <p class="card-text character">Harold 'Happy' Hogan</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card h-100">
+              <img src="https://www.themoviedb.org/t/p/w138_and_h175_face/hPwCMEq6jLAidsXAX5BfoYgIfg2.jpg" class="card-img-top img-fluid" alt="..." style="height: 200px;">
+              <div class="card-body p-2">
+                <h6 class="card-text fw-bolder">Jamie Foxx</h6>
+                <p class="card-text character">Max Dillon / Electro</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="my-4"><a href="#" class="h6 fw-bolder text-decoration-none text-dark">총 출연진 & 제작진</a></div>
+        
+
+        <hr>
+        
+
+        <!-- 사용자의견-->
+        <div class="container">
+          <div class="row">
+            <nav class="navbar navbar-expand-lg">
+              <div class="container-fluid">
+                <p class="navbar-brand m-0 me-5 fw-bolder" href="#">사용자의견</p>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item mx-1">
+                      <a class="nav-link active  fw-bolder" aria-current="page" href="#">리뷰</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                      <a class="nav-link  fw-bolder" href="#">토론내역</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <div class="row">
+            <div class="box box-1 m-2 d-flex justify-content-between shadow">
+              <div class="box d-flex align-items-center">
+                <img src="https://www.gravatar.com/avatar/b54b9ba8302345789a803e9480f7bf78.jpg?s=45" class="rounded-5" alt="">
+                <p class="name my-0 mx-3">Marvin's Underground Movies Collection</p>
+              </div>
+              <div class="box d-flex">
+                <p class="my-auto mx-3 ">토론중</p>
+                <p class="my-auto mx-5 ">1</p>
+                <div class="ms-5">
+                  <p class="my-0 mx-3">7월11, 2022 at 10:13 AM</p>
+                  <p class="my-0 mx-3 text-end">작성자 : Celluloid Fan</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="box box-1 m-2 d-flex justify-content-between shadow">
+              <div class="box d-flex align-items-center">
+                <img src="https://www.themoviedb.org/t/p/w45_and_h45_face/ildxsvkjfVL523xIXvHum4Hl6uK.png" class="rounded-5" alt="">
+                <p class="name my-0 mx-3">为什么要锁中文名？</p>
+              </div>
+              <div class="box d-flex">
+                <p class="my-auto mx-3 ">토론중</p>
+                <p class="my-auto mx-5 ">1</p>
+                <div class="ms-5">
+                  <p class="my-0 mx-3">6월 26, 2022 at 12:10 PM</p>
+                  <p class="my-0 mx-3 text-end">작성자 : ldt0621</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="box box-1 m-2 d-flex justify-content-between shadow">
+              <div class="box d-flex align-items-center">
+                <img src="https://www.themoviedb.org/t/p/w45_and_h45_face/3NCHg4lsrYg7ayOj6wVDA9Kgsq5.jpg" class="rounded-5" alt="">
+                <p class="name my-0 mx-3">Marvin's Underground Movies Collection</p>
+              </div>
+              <div class="box d-flex">
+                <p class="my-auto mx-3 ">토론중</p>
+                <p class="my-auto mx-5 ">1</p>
+                <div class="ms-5">
+                  <p class="my-0 mx-3">4월 16, 2022 at 4:17 AM</p>
+                  <p class="my-0 mx-3 text-end">작성자 : cpheonix</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-4"><a href="#" class="h6 fw-bolder text-decoration-none text-dark">토론으로 이동</a></div>
+        </div>
+        <hr>
+
+
+        <!-- 미디어-->
+        <div class="row my-3">
+          <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <p class="navbar-brand m-0 me-5 fw-bolder" href="#">미디어</p>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item mx-1">
+                    <a class="nav-link active  fw-bolder" aria-current="page" href="#">인기있는</a>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <a class="nav-link  fw-bolder" href="#">토론내역</a>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <a class="nav-link  fw-bolder" href="#">동영상</a>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <a class="nav-link  fw-bolder" href="#">배경</a>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <a class="nav-link  fw-bolder" href="#">포스터</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <div class="row">
+            <div class="box d-flex">
+              <img src="https://www.themoviedb.org/t/p/w533_and_h300_bestv2/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg" class="media_img_1" alt="">
+              <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/voddFVdjUoAtfoZZp2RUmuZILDI.jpg" class="media_img_2" alt="">
+            </div>
+          </div>
+
+        </div>
+        
+        <hr>
+        
+        <!--시리즈-->
+        <div class="row my-3">
+          <div class="box box-2 py-5 rounded-3 opacity-75 w-100">
+            <h3 class="text-white">스파이더맨(MCU) 시리즈에 포함된 작품</h3>
+            <p class="text-white">스파이더맨: 홈커밍, 스파이더맨: 파 프롬 홈, and 스파이더맨: 노 웨이 홈 포함</p>
+            <button class="btn btn-dark rounded-5">
+              컬렉션 보기
+            </button>
+          </div>
+        </div>
+
+        <hr>
+        
+        <!--추천-->
+        <div class="row">
+          <h5 class="fw-bolder my-3">추천</h5>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <img src="https://www.themoviedb.org/t/p/w250_and_h141_face/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg" class="card-img-top rounded-3" alt="...">
+              </div>
+              <div class="d-flex justify-content-between">
+                <p>닥터 스트레인지</p>
+                <p>75%</p>
+              </div>
+              
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="https://www.themoviedb.org/t/p/w250_and_h141_face/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg" class="card-img-top rounded-3" alt="...">
+              </div>
+              <div class="d-flex justify-content-between">
+                <p>더 베트맨</p>
+                <p>77%</p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="https://www.themoviedb.org/t/p/w250_and_h141_face/c6H7Z4u73ir3cIoCteuhJh7UCAR.jpg" class="card-img-top rounded-3" alt="...">
+              </div>
+              <div class="d-flex justify-content-between">
+                <p>이터널스</p>
+                <p>71%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!--side-->
+      <div class="col-3">
+        <div class="section d-flex justify-content-start mb-4">
+          <span>
+            <i class="fa-sharp fa-solid fa-f mx-2" style="font-size: 1.5rem;"></i>
+          </span>
+          <span>
+            <i class="fa-sharp fa-solid fa-dove mx-2" style="font-size: 1.5rem;"></i>
+          </span>
+          <span>
+            <i class="fa-sharp fa-solid fa-camera mx-2" style="font-size: 1.5rem;"></i>
+          </span>
+          <span>
+            <i class="fa-sharp i-1 fa-solid fa-play mx-2" style="font-size: 1.5rem;"></i>
+          </span>
+          <span>
+            <i class="fa-solid i-1 fa-link mx-2" style="font-size: 1.5rem;"></i>
+          </span>
+        </div>
+
+        <div class="my-3">
+          <p class="mb-0 fw-bolder">원제</p>
+          <p class="mb-0">Spider-Man: No Way Home</p>
+        </div>
+
+        <div class="my-3">
+          <p class="mb-0 fw-bolder">상태</p>
+          <p class="mb-0">개봉됨</p>
+        </div>
+
+        <div class="my-3">
+          <p class="mb-0 fw-bolder">원여</p>
+          <p class="mb-0">영어</p>
+        </div>
+
+        <div class="my-3">
+          <p class="mb-0 fw-bolder">제작비</p>
+          <p class="mb-0">$200,000,000.00</p>
+        </div>
+
+        <div class="my-3">
+          <p class="mb-0 fw-bolder">수익</p>
+          <p class="mb-0">$2,077,915,648.00</p>
+        </div>
+
+        <div class="my-3">
+          <h5 class="mb-0 mt-4 fw-bolder">키워드</h5>
+          <div class="box">
+            <button class="btn-1 btn">new york city</button>
+            <button class="btn-1 btn">loss of loved one</button>
+            <button class="btn-1 btn">showdown</button>
+            <button class="btn-1 btn">secret identity</button>
+            <button class="btn-1 btn">hero</button>
+            <button class="btn-1 btn">magic</button>
+            <button class="btn-1 btn">villain</button>
+            <button class="btn-1 btn">vigilante</button>
+            <button class="btn-1 btn">portal</button>
+            <button class="btn-1 btn">sequel</button>
+            <button class="btn-1 btn">superhero</button>
+            <button class="btn-1 btn">based on comic</button>
+            <button class="btn-1 btn">alternate reality</button>
+            <button class="btn-1 btn">masked vigilante</button>
+            <button class="btn-1 btn">afternate reality</button>
+            <button class="btn-1 btn">duringcreditsstinger</button>
+            <button class="btn-1 btn">marvel cinematic universe(mcu)</button>
+            <button class="btn-1 btn">teenage hero</button>
+            <button class="btn-1 btn">multiverse</button>
+            <button class="btn-1 btn">alternate universe</button>
+            <button class="btn-1 btn">superhero teamup</button>
+            <button class="btn-1 btn">returning hero</button>
+            <button class="btn-1 btn">crossover</button>
+            <button class="btn-1 btn">teamwork</button>
+
+          </div>
+        </div>
+
+        <hr>
+
+        <div>
+          <h5 class="fw-bolder">문서 점수</h5>
+          <div class="score">
+            <div class="true p-2" style="width: 88%">88</div>
+          </div>
+          <p class="font-1">완성 직전...</p>
+        </div>
+
+        <div class="mt-3">
+          <h5 class="fw-bolder">우수 기여자</h5>
+          <div class="d-flex">
+            <img src="https://www.themoviedb.org/t/p/w45_and_h45_face/yYG7Rhn9HfFpssIMeNiDynvxC14.jpg" class="m-2 rounded-circle" alt="">
+            <p class="mx-2 my-0"><span class="fw-bolder">751</span><br>raze464</p>
+          </div>
+          <div class="d-flex">
+            <img src="https://www.themoviedb.org/t/p/w45_and_h45_face/oTPjql0MGIwRrg9RolefYaaPlAN.jpg" class="m-2 rounded-circle" alt="">
+            <p class="mx-2 my-0"><span class="fw-bolder">96</span><br>jornicolas</p>
+          </div>
+          <div class="d-flex">
+            <img src="https://www.themoviedb.org/t/p/w45_and_h45_face/3nyT3aw7YK2fmP0egcxUY8sJVqQ.jpg" class="m-2 rounded-circle" alt="">
+            <p class="mx-2 my-0"><span class="fw-bolder">64</span><br>agnizheb</p>
+          </div>
+          <div class="d-flex">
+            <img src="https://www.themoviedb.org/t/p/w45_and_h45_face/nidqITf735x9xxHfncXkT9BmOQ7.png" class="m-2 rounded-circle" alt="">
+            <p class="mx-2 my-0"><span class="fw-bolder">53</span><br>Gus</p>
+          </div>
+        </div>
+
+        <button class="btn btn-2 my-3 rounded-4">
+          <a href="#" class="text-decoration-none text-light"><i class="fa-solid fa-lock me-1 p-2"></i>편집을 하시려면 로그인 하십시오.</a>
+        </button>
+
+        <div class="my-3">
+          <a href="#" class="text-decoration-none keyborad"><i class="fa-sharp fa-solid fa-keyboard me-1"></i>키보드 단축키</a>
+        </div>
+
+        <div class="my-3">
+          <a href="#" class="text-decoration-none text-dark"><i class="fa-solid fa-circle-exclamation me-1"></i>문제 보고를 하려면 로그인 해 주십시오</a>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+      <div class="footer__logo">
+        <img class="footer__img"
+          src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+          alt="" />
+        <button class="footer__btn">커뮤니티 참여</button>
+      </div>
+      <div class="footer__text">
+        <h5>THE BASICS</h5>
+        <p>TMDb에 대해</p>
+        <p>문의하기</p>
+        <p>Support Forums</p>
+        <p>API</p>
+        <p>System Status</p>
+      </div>
+      <div class="footer__text">
+        <h5>참여하기</h5>
+        <p>기여 지침서</p>
+        <p>새 영화 추가</p>
+        <p>새 TV 프로그램 추가</p>
+      </div>
+      <div class="footer__text">
+        <h5>커뮤니티</h5>
+        <p>가이드라인</p>
+        <p>토론 내역</p>
+        <p>기여 랭킹</p>
+        <p>Twitter</p>
+      </div>
+      <div class="footer__text">
+        <h5>법적 사항</h5>
+        <p>서비스 이용약관</p>
+        <p>API Terms of Use</p>
+        <p>개인정보약관</p>
+      </div>
+  </footer>
+
+
+</body>
+</html>

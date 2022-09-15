@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="//storage.googleapis.com/cr-resource/image/455e39836a520bfe95a4163e304cd943/ojinbook/ojinbook-favicon.ico?_1551065923" />
+  <script src="https://kit.fontawesome.com/3ef4088aa9.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light nav">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" width="150px" height="50px" alt="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                영화
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">인기</a></li>
+                <li><a class="dropdown-item" href="#">현재 상영 중</a></li>
+                <li><a class="dropdown-item" href="#">개봉 예정</a></li>
+                <li><a class="dropdown-item" href="#">높은 평점</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  TV 프로그램
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">인기</a></li>
+                <li><a class="dropdown-item" href="#">오늘 방영</a></li>
+                <li><a class="dropdown-item" href="#">TV 방영 중</a></li>
+                <li><a class="dropdown-item" href="#">높은 평점</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+          </ul>
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item"><i class="fa-solid fa-plus fa-lg"></i></li>
+            <li class="nav-item"><button>KO</button></li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a>
+            </li>
+            <li class="nav-item">회원가입</li>
+            <li class="nav-item"><i class="fa-solid fa-magnifying-glass fa-lg"></i></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <!-- Modal -->
+  <div class="modal" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Community -->
+  <main class="community">
+    <div class="container">
+      <h2 class="text-center my-5">Community</h2>
+      <div class="row row-cols-1 row-cols-lg-2">
+        <!-- List -->
+        <aside class="community__list col-lg-2 mb-3">
+          <ul class="list-group">
+            <li class="list-group-item"><a class="text-decoration-none" href="#">Boxoffice</a></li>
+            <li class="list-group-item"><a class="text-decoration-none" href="#">Movies</a></li>
+            <li class="list-group-item"><a class="text-decoration-none" href="#">Genres</a></li>
+            <li class="list-group-item"><a class="text-decoration-none" href="#">Actors</a></li>
+          </ul>
+        </aside>
+        <!-- Board -->
+        <section class="community__board col-lg-10 d-none d-lg-block">
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">영화 제목</th>
+                <th scope="col">글 제목</th>
+                <th scope="col">작성자</th>
+                <th scope="col">작성 시간</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Great Movie title</th>
+                <td>Best Movie Ever</td>
+                <td>user</td>
+                <td>1 minute ago</td>
+              </tr>
+              <tr>
+                <th scope="row">Great Movie title</th>
+                <td>Movie Test</td>
+                <td>user</td>
+                <td>1 minute ago</td>
+              </tr>
+              <tr>
+                <th scope="row">Great Movie title</th>
+                <td>Movie Test</td>
+                <td>user</td>
+                <td>1 minute ago</td>
+              </tr>
+              <tr>
+                <th scope="row">Great Movie title</th>
+                <td>Movie Test</td>
+                <td>user</td>
+                <td>1 minute ago</td>
+              </tr>
+              <tr>
+                <th scope="row">Great Movie title</th>
+                <td>Movie Test</td>
+                <td>user</td>
+                <td>1 minute ago</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </section>
+        <!-- Card -->
+        <div class="community__cards d-lg-none">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4 class="card-title">Movie Test</h4>
+              <h5 class="card-subtitle mb-2">Great Movie Title</h5>
+              <p class="card-text">user</p>
+              <p class="card-text">1 minute ago</p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4 class="card-title">Movie Test</h4>
+              <h5 class="card-subtitle mb-2">Great Movie Title</h5>
+              <p class="card-text">user</p>
+              <p class="card-text">1 minute ago</p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4 class="card-title">Movie Test</h4>
+              <h5 class="card-subtitle mb-2">Great Movie Title</h5>
+              <p class="card-text">user</p>
+              <p class="card-text">1 minute ago</p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4 class="card-title">Movie Test</h4>
+              <h5 class="card-subtitle mb-2">Great Movie Title</h5>
+              <p class="card-text">user</p>
+              <p class="card-text">1 minute ago</p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4 class="card-title">Movie Test</h4>
+              <h5 class="card-subtitle mb-2">Great Movie Title</h5>
+              <p class="card-text">user</p>
+              <p class="card-text">1 minute ago</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav aria-label="Page navigation example ">
+        <ul class="pagination justify-content-center mt-3">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn btn-dark review"><a href="form.html" class="text-decoration-none text-white">리뷰 작성하기</a></button>
+
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__logo">
+      <img class="footer__img"
+        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+        alt="" />
+      <button class="footer__btn">커뮤니티 참여</button>
+    </div>
+    <div class="footer__text">
+      <h5>THE BASICS</h5>
+      <p>TMDb에 대해</p>
+      <p>문의하기</p>
+      <p>Support Forums</p>
+      <p>API</p>
+      <p>System Status</p>
+    </div>
+    <div class="footer__text">
+      <h5>참여하기</h5>
+      <p>기여 지침서</p>
+      <p>새 영화 추가</p>
+      <p>새 TV 프로그램 추가</p>
+    </div>
+    <div class="footer__text">
+      <h5>커뮤니티</h5>
+      <p>가이드라인</p>
+      <p>토론 내역</p>
+      <p>기여 랭킹</p>
+      <p>Twitter</p>
+    </div>
+    <div class="footer__text">
+      <h5>법적 사항</h5>
+      <p>서비스 이용약관</p>
+      <p>API Terms of Use</p>
+      <p>개인정보약관</p>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,277 @@
+:root {
+  /* Color */
+  --color-main: #042541;
+  --color-white: #fff;
+  --color-dark: #262626;
+  --color-light-gray: #E5E5E5;
+  --color-gray: #7E8E9C;
+  --color-skyblue: #08B3E4;
+  --color-btn-solid: #D7D7D7;
+  --color-btn: #E5E5E5;
+
+    /* Font size */
+    --font-large: 48px;
+    --font-medium: 32px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+  
+    /* Font weight */
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+}
+
+button {
+  background: none;
+  border: 1px solid var(--color-white);
+  border-radius: 4px;
+  color: var(--color-white);
+}
+
+
+/* Navbar */
+.nav {
+  background-color: var(--color-main) !important;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav .navbar-nav .nav-item > a {
+  color: var(--color-white);
+}
+
+.navbar-nav:nth-child(2) .nav-item {
+  margin-right: 25px;
+  color: var(--color-white);
+}
+
+.fa-magnifying-glass {
+  color: var(--color-skyblue);
+}
+
+
+/* Header */
+.header__nav {
+  justify-content: center;
+}
+
+.banner {
+  background-image: url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/3CA8301961AB8F40EEF789044B220126B04B75258B0E2564EE0030B3B10CFEBF/scale?width=2880&aspectRatio=1.78&format=jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.banner::before {
+  content: "";
+  background-color: var(--color-dark);
+  opacity: 0.8;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.banner .container {
+  z-index: 9;
+}
+
+.banner__img {
+  background-color: var(--color-main);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px 15px 0 0;
+}
+
+.banner__img img {
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+}
+
+.banner__img-offer {
+  padding: 10px 15px;
+}
+
+.banner__img-offer img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.banner__img-text {
+  color: var(--color-white);
+  font-size: var(--font-micro);
+  line-height: 15px;
+}
+
+.banner__img-text span {
+  color: var(--color-gray);
+}
+
+.banner__title,
+.banner__description,
+.banner__text {
+  color: var(--color-white);
+}
+
+.banner__title {
+  margin: 0;
+}
+
+.banner__description {
+  font-size: var(--font-micro);
+}
+
+.banner__description span {
+  border: 1px solid var(--color-white);
+  border-radius: 4px;
+  padding: 1px 4px;
+  margin-right: 5px;
+}
+
+.banner__icon i:not(:last-child) {
+  background-color: var(--color-main);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 12px;
+}
+
+.banner__icon span {
+  color: var(--color-white);
+  margin-left: 10px;
+}
+
+.banner__icon span i {
+  margin-right: 5px;
+}
+
+.fst-italic {
+  color: var(--color-gray);
+}
+
+
+
+/* main */
+.box-1{
+  border: 1px solid var(--color-gray);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.media_img_1{
+  width: 533px;
+  min-width: 533px;
+  height: 300px;
+  min-height: 300px;
+}
+
+.media_img_2{
+  width: 200px;
+  height: 300px;
+}
+
+.box-2{
+  background-image: url(https://i.pinimg.com/564x/fa/90/59/fa9059acc71abc517f09a7b80a185f5e.jpg);
+  background-repeat: none;
+  background-size: cover;
+  background-color: var(--color-main);
+}
+
+.i-1{
+  border-left: solid var(--color-gray);
+  padding-left: 8px;
+}
+
+.btn-1{
+  background-color:var(--color-btn);
+  border: 1px solid var(--color-btn-solid) ;
+  margin: 0.2rem 0.1rem;
+}
+
+.score{
+  background-color: var(--color-btn);
+  border-radius: 5px;
+}
+
+div.true{
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 0 12px;
+  border-color: var(--color-btn);
+  background-color: var(--color-dark);
+  color: var(--color-btn);
+}
+
+.font-1{
+  font-size: var(--font-micro);
+}
+
+.btn-2{
+  background-color: var(--color-dark);
+}
+
+.keyborad{
+  color:var(--color-gray);
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  background-color: var(--color-main);
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.footer__logo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.footer__img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.footer__btn {
+  padding: 10px 15px;
+  background-color: var(--color-white);
+  border-radius: 6px;
+  color: var(--color-skyblue);
+  font-weight: var(--weight-bold);
+  font-size: var(--font-regular);
+  letter-spacing: 4px;
+}
+
+.footer__btn:hover {
+  opacity: .8;
+}
+
+.footer__text {
+  color: var(--color-white);
+  margin: 0 20px;
+  text-align: center;
+  padding-top: 25px;
+}
+
+.footer__text p {
+  margin: 0;
+  opacity: .5;
+}
+
+.footer__text p:hover {
+  opacity: .8;
+}

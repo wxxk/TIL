@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="//storage.googleapis.com/cr-resource/image/455e39836a520bfe95a4163e304cd943/ojinbook/ojinbook-favicon.ico?_1551065923" />
+  <script src="https://kit.fontawesome.com/3ef4088aa9.js" crossorigin="anonymous" defer></script>
+  
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-light nav">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" width="150px" height="50px" alt="logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              영화
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">인기</a></li>
+              <li><a class="dropdown-item" href="#">현재 상영 중</a></li>
+              <li><a class="dropdown-item" href="#">개봉 예정</a></li>
+              <li><a class="dropdown-item" href="#">높은 평점</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                TV 프로그램
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">인기</a></li>
+              <li><a class="dropdown-item" href="#">오늘 방영</a></li>
+              <li><a class="dropdown-item" href="#">TV 방영 중</a></li>
+              <li><a class="dropdown-item" href="#">높은 평점</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+        </ul>
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><i class="fa-solid fa-plus fa-lg"></i></li>
+          <li class="nav-item"><button>KO</button></li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a>
+          </li>
+          <li class="nav-item">회원가입</li>
+          <li class="nav-item"><i class="fa-solid fa-magnifying-glass fa-lg"></i></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Modal -->
+  <div class="modal" tabindex="-1"  id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Visual-->
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="height: 600px;">
+    <div class="carousel-inner" style="height: 600px;">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="https://i.pinimg.com/564x/23/7a/b9/237ab9a429e95b32b836668a841e9697.jpg" class="d-block w-100 img-fluid" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="https://i.pinimg.com/564x/ad/5f/5f/ad5f5fa6d557fc433da75975d674fb21.jpg" class="d-block w-100 img-fluid" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.pinimg.com/564x/24/05/f5/2405f5d1220d45fef53df0bfe804e104.jpg" class="d-block w-100 img-fluid" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Card -->
+  <div class="container">
+    <div class="h2 text-center py-4 m-0 fw-bolder">Boxoffice</div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+      <div class="col py-3">
+        <div class="card card">
+          <div class="hovereffect">
+            <img src="movie1.jpg" class="card-img-top" alt="...">
+            <div class="overlay">
+              <h2>스파이더맨: 노 웨이 홈</h2>
+              <a class="info" href="index2.html">바로예매</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <div class="hovereffect">
+            <img src="movie2.jpg" class="card-img-top" alt="">
+            <div class="overlay">
+              <h2>죽은 시인들의 사회</h2>
+              <a class="info" href="#">바로예매</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <div class="hovereffect">
+            <img src="movie3.jpg" class="card-img-top" alt="">
+            <div class="overlay">
+              <h2>다크 나이트 라이즈</h2>
+              <a class="info" href="#">바로예매</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <div class="hovereffect">
+            <img src="movie4.jpg" class="card-img-top" alt="">
+            <div class="overlay">
+              <h2>그랜드 부다페스트 호텔</h2>
+              <a class="info" href="#">바로예매</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <div class="hovereffect">
+            <img src="movie5.jpg" class="card-img-top" alt="">
+            <div class="overlay">
+              <h2>her</h2>
+              <a class="info" href="#">바로예매</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col py-3">
+        <div class="card">
+          <div class="hovereffect">
+            <img src="movie6.jpg" class="card-img-top" alt="">
+            <div class="overlay">
+              <h2>위대한 쇼맨</h2>
+              <a class="info" href="#">바로예매</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi debitis, magnam eaque voluptatem delectus vero illo commodi tempore odio ab distinctio atque, error enim ipsum in deserunt est provident.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__logo">
+      <img class="footer__img"
+        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+        alt="" />
+      <button class="footer__btn">커뮤니티 참여</button>
+    </div>
+    <div class="footer__text">
+      <h5>THE BASICS</h5>
+      <p>TMDb에 대해</p>
+      <p>문의하기</p>
+      <p>Support Forums</p>
+      <p>API</p>
+      <p>System Status</p>
+    </div>
+    <div class="footer__text">
+      <h5>참여하기</h5>
+      <p>기여 지침서</p>
+      <p>새 영화 추가</p>
+      <p>새 TV 프로그램 추가</p>
+    </div>
+    <div class="footer__text">
+      <h5>커뮤니티</h5>
+      <p>가이드라인</p>
+      <p>토론 내역</p>
+      <p>기여 랭킹</p>
+      <p>Twitter</p>
+    </div>
+    <div class="footer__text">
+      <h5>법적 사항</h5>
+      <p>서비스 이용약관</p>
+      <p>API Terms of Use</p>
+      <p>개인정보약관</p>
+    </div>
+  </footer>
+  
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+</body>
+</html>
