@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>정말 중요한 내용</h1>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur at ab earum vel sit non ex magnam quidem magni quod in minima nemo exercitationem, enim voluptatum voluptas ipsa repellat dignissimos.</p>
+
+  <script>
+    const h1 = document.querySelector('h1')
+    h1.addEventListener('copy', function(event) {
+      // event의 기본 동작을 막고, 
+      event.preventDefault()
+      console.log('삐빅 복사를 할 수 없습니다.')
+    })
+    
+    h1.addEventListener('click', function(event) {
+      event.preventDefault()
+      console.log(event.button)
+    })
+  </script>
+</body>
+</html>

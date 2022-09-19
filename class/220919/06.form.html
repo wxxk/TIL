@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    비밀번호 : <input type="password" name="password" id="password">
+    비밀번호 확인 : <input type="password" name="password_confirmation" id="password_confirmation">
+    <input type="button" id="btn" value="비밀번호확인">
+  </form>
+  <p id="result"></p>
+
+  
+  <script>
+    const btn = document.querySelector('#btn')
+    btn.addEventListener('click', function() {
+      const p1 = document.querySelector('#password').value;
+      const p2 = document.querySelector('#password_confirmation').value;
+
+      if (p1.length < 8) {
+        alert("8자리 이상이여야 합니다.")
+        return false;
+      }
+
+      if( p1 != p2) {
+        alert("비밀번호가 일치 하지 않습니다.");
+        return false;
+
+      } else {
+        console.log("통과");
+        const result = document.querySelector('#result').value;
+        document.querySelector('#result').innerText = "비밀번호가 일치합니다."
+      }
+    })
+  </script>
+
+</body>
+</html>

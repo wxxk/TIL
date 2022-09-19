@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100vh;
+
+      color: white;
+      justify-content: center;
+      align-items: center;
+
+      display: none;
+    }
+    .active {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <button id="modal-btn">모달 버튼</button>
+  <div id="modal-content" class="modal-overlay">모달
+    <button id="modal-cancel-btn">취소 버튼</button>
+  </div>
+  
+  <script>
+    const modalBtn = document.querySelector('#modal-btn')
+    // 모달 버튼이 클릭되면
+    modalBtn.addEventListener('click', function() {
+      document.querySelector('.modal-overlay').classList.toggle('active')
+    })
+
+
+    // // 모달 취소 버튼이 클릭 되면
+    // const modalCancelBtn = document.querySelector('#modal-cancel-btn')
+    // modalCancelBtn.addEventListener('click', function() {
+    //   document.querySelector('#modal-content').classList.toggle('active')
+    // })
+
+    // 모달 오버레이를 클릭하면
+    const modalOverlay = document.querySelector('#modal-content')
+    modalOverlay.addEventListener('click', function() {
+      document.querySelector('#modal-content').classList.toggle('active')
+    }) 
+  </script>
+
+</body>
+</html>
