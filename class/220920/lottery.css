@@ -1,0 +1,65 @@
+h1 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  background-color: black;
+}
+
+a:hover {
+  color: black;
+  background-color: white;
+}
+
+#result {
+  height: 800px;
+  margin: 3rem 20rem;
+  border: 3px;
+}
+
+.ball-container{
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+.ball-container:hover{
+  background-color: black;
+  color: white;
+}
+
+
+.ball {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 10rem;
+  font-size: xx-large;
+  font-weight: bolder;
+  margin: 10px;
+  box-shadow: 12px 12px 24px #505050;
+}
+
+.btn{
+  display: flex;
+  justify-content: center;
+}
+
+#lotto-btn{
+  width: 200px;
+  height: 50px;
+  font-size: larger;
+  background-color: white;
+  color: black;
+  border: 5px dashed red;
+  font-weight: bold;
+}
+
+#lotto-btn:hover{
+  background-color: yellow;
+  border: 5px dashed red;
+}
