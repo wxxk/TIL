@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-center m-5 fw-bolder">사칙연산 수행하기</h1>
+<div class="d-flex justify-content-center">
+  <div class="w-50">
+    <p class="bg-dark text-white m-3 mt-5 h3 text-center  rounded-5">{{ num1 }} + {{ num2 }} = {{ a }}</p>
+    <p class="bg-dark text-white m-3 mt-5 h3 text-center  rounded-5">{{ num1 }} - {{ num2 }} = {{ b }}</p>
+    <p class="bg-dark text-white m-3 mt-5 h3 text-center  rounded-5">{{ num1 }} * {{ num2 }} = {{ c }}</p>
+    <p class="bg-dark text-white m-3 mt-5 h3 text-center  rounded-5">{{ num1 }} // {{ num2 }} = {{ d }}</p>
+  </div>
+</div>
+
+{% endblock %}
