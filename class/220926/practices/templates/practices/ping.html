@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- ping : fomr 태그 및 input 태그를 통해 사용자의 입력을 받아
+              pong이라는 페이지에 전달해 주는 기능 -->
+<h1>Ping</h1>
+<form action="/pong" method="GET">
+  이름을 입력해주세요. <input type="text" name="ball">
+  <input type="submit">
+</form>
+{% endblock %}
