@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>index.html</h1>
+<form action="{% url 'todos:create' %}">
+  할 일<input type="text" name="content" maxlength="80">
+  우선순위<input type="num" name="priority" value="1">
+  <input type="date" name="deadline">
+  <input type="submit" value="할 일 추가">
+</form>
+<hr>
+<ul>
+  {% for todo in todos %}
+  <li>
+    {{ todo.id }} |
+    {{ todo.priority }} |
+    {{ todo.content }} |
+    {{ todo.created_at }} |
+    {{ todo.deadline }} |
+    {{ todo.completed }} |
+    <a href="">수정</a>
+    <a href="{% url 'todos:delete' todo.id %}">삭제</a>
+  </li>
+</ul>
+{% endfor %}
+{% endblock %}
