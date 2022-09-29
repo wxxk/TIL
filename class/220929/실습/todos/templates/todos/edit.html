@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<p></p>
+<form action="{% url 'todos:create' %}">
+  <div class="container">
+    <div class="input-group m-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">할 일</span>
+      <input type="text" name="content" maxlength="80" class="form-control" aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default" value="{{ todos.content }}">
+    </div>
+    <div class="input-group m-3">
+      <label class="input-group-text" id="inputGroup-sizing-default">우선순위</label>
+      <select type='num' name="priority" class="form-select" id="inputGroupSelect01">
+        <option selected value="{{todos.priority}}">{{ todos.priority }}</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="input-group m-3">
+      <label class="input-group-text" id="inputGroup-sizing-default">마감기한</label>
+      <input type="date" name="deadline" value="1" class="form-control" aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-dark m-3" type="submit">수정</button>
+    </div>
+  </div>
+</form>
+{% endblock%}

@@ -14,6 +14,13 @@
 </head>
 
 <body>
+  <nav class="navbar bg-info mb-3">
+    <div class="container-fluid justify-content-center">
+      <a class="navbar-brand" href="{% url 'todos:index' %}">
+        <p class="text-white fw-bolder m-0 display-3">할 일</p>
+      </a>
+    </div>
+  </nav>
   {% block content %}
   {% endblock %}
 </body>

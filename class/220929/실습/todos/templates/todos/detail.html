@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title m-3">할 일 : {{ todo.content }}</h3>
+      <h5 class="card-subtitle text-muted fw-bolder m-3">우선순위 : {{ todo.priority }}</h5>
+      <div class="container m-1">
+        <p class="card-text m-1">마감일자 : {{todo.deadline}}</p>
+        <p class="card-text m-1">작성일자 : {{todo.created_at}}</p>
+        <p class="card-text m-1">완료여부 : {{ todo.completed }}</p>
+      </div>
+      <div class="container d-flex justify-content-evenly">
+        <a href="{% url 'todos:index' %}" class="card-link m-3 btn btn-primary">완료</a>
+        <a href="{% url 'todos:edit' todo.pk %}" class="card-link m-3 btn btn-danger">수정</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}
+
+<!-- <h1>detail.html</h1>
+<h2>제목 : {{todo.content}}</h2>
+<p>우선순위 : {{ todo.priority }}</p>
+<p>작성일자 : {{ todo.created_at }}</p>
+<p>마감일자 : {{ todo.deadline }}</p>
+<p>완료여부 : {{ todo.completed }}</p>
+<a href="{% url 'todos:index' %}">완료</a>
+<a href="{% url 'todos:edit' todo.pk %}">수정</a> -->

@@ -1,25 +1,74 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>index.html</h1>
+
 <form action="{% url 'todos:create' %}">
-  할 일<input type="text" name="content" maxlength="80">
-  우선순위<input type="num" name="priority" value="1">
-  <input type="date" name="deadline">
-  <input type="submit" value="할 일 추가">
+  <div class="container">
+    <div class="input-group m-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">할 일</span>
+      <input type="text" name="content" maxlength="80" class="form-control" aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group m-3">
+      <label class="input-group-text" id="inputGroup-sizing-default">우선순위</label>
+      <select type='num' name="priority" class="form-select" id="inputGroupSelect01">
+        <option selected>우선순위</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="input-group m-3">
+      <label class="input-group-text" id="inputGroup-sizing-default">마감기한</label>
+      <input type="date" name="deadline" value="1" class="form-control" aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-dark m-3" type="submit">할 일 추가</button>
+    </div>
+  </div>
 </form>
+
 <hr>
-<ul>
-  {% for todo in todos %}
-  <li>
-    {{ todo.id }} |
-    {{ todo.priority }} |
-    {{ todo.content }} |
-    {{ todo.created_at }} |
-    {{ todo.deadline }} |
-    {{ todo.completed }} |
-    <a href="">수정</a>
-    <a href="{% url 'todos:delete' todo.id %}">삭제</a>
-  </li>
-</ul>
-{% endfor %}
+
+<div class="container">
+  <table class="table text-center center table-striped-columns table-bordered border-dark">
+    <thead>
+      <tr>
+        <th scope="col align-middle">우선순위</th>
+        <th scope="col align-middle">할 일</th>
+        <th scope="col align-middle">만든 날짜</th>
+        <th scope="col align-middle">마감 날짜</th>
+        <th scope="col align-middle">완료 여부</th>
+        <th scope="col align-middle">체크</th>
+        <th scope="col align-middle">수정</th>
+        <th scope="col align-middle">삭제</th>
+      </tr>
+    </thead>
+    {% for todo in todos %}
+    <tbody>
+      <td class="align-middle">{{ todo.priority }}</td>
+      <td class="align-middle">
+        <a href="{% url 'todos:detail' todo.pk %}" class="text-decoration-none">
+          {{ todo.content }}
+        </a>
+      </td class="align-middle">
+      <td class="align-middle">{{ todo.created_at }}</td>
+      <td class="align-middle text-danger fw-bolder">{{ todo.deadline }}</td>
+      {% if todo.completed == False %}
+      <td class="align-middle">미완료</td>
+      {% else %}
+      <td class="align-middle text-success fw-bolder h5">완료</td>
+      {% endif %}
+      <td class="align-middle"><a href="{% url 'todos:change' todo.pk %}" class="btn btn-warning text-white">상태변경</a>
+      </td>
+      <td class="align-middle"><a href="{% url 'todos:edit' todo.pk %}" class="btn btn-primary">수정</a></td>
+      <td class="align-middle"><a href="{% url 'todos:delete' todo.id %}" class="btn btn-danger">삭제</a></td>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
 {% endblock %}
