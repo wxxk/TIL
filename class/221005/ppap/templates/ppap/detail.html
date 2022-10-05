@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="m-5 p-3 border border-3 border-info rounded">
+  <h3>제목 : {{v.title}}</h3>
+  <h5>내용 : {{v.content}}</h5>
+  <p>만든날짜 : {{v.created_at}}</p>
+  <p>수정날짜 : {{v.updated_at}}</p>
+  <div>
+    <a href="{% url 'ppap:index' %}" class="btn btn-outline-info fw-bolder">홈으로</a>
+    <a href="{% url 'ppap:delete' v.pk %}" class="btn btn-outline-danger fw-bolder">삭제</a>
+    <a href="{% url 'ppap:update' v.pk %}" class="btn btn-outline-warning fw-bolder">수정</a>
+  </div>
+</div>
+
+{% endblock%}

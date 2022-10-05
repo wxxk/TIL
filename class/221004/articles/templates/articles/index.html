@@ -7,6 +7,7 @@
 {% for article in articles %}
 <h3>{{ article.title }}</h3>
 <p>{{ article.create_at }} | {{ article.update_at }}</p>
+<a href="{% url 'articles:edit' article.pk %}" type="button">수정</a>
 <hr>
 {% endfor %}
 

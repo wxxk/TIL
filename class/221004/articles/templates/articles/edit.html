@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="{% url 'articles:update' articles.pk %}" method="POST">
+  {% csrf_token %}
+  <input type="text" value="{{ articles.title }}" name="title">
+  <input type="text" value="{{ articles.content }}" name="content">
+  <input type="submit" value="수정">
+</form>
+{% endblock %}

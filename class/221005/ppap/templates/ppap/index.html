@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="container">
+  <h1 class="text-center m-3"><a href="{% url 'ppap:index' %}" class="text-decoration-none text-dark">게시판</a></h1>
+</div>
+<hr>
+
+
+<div class="container text-center">
+  <img src="{% static 'images/kakao.jpg' %}" alt="" style="width: 500px; height: 500px;">
+</div>
+
+<div class="text-center m-3">
+  <a href="{% url 'ppap:create' %}" type="button" class="btn btn-outline-info justify-content-end">글 쓰기</a>
+</div>
+<hr>
+
+{% for i in v %}
+<div class="d-flex justify-content-center">
+  <div class="m-3 p-3 border border-3 border-info rounded text-center" style="width: 800px;">
+    <h3><a href="{% url 'ppap:detail' i.pk %}"
+        class="text-decoration-none text-success border border-success border-2 rounded">제목 :
+        {{i.title}}</a></h3>
+    <p>만든날짜 : {{i.created_at}}</p>
+  </div>
+</div>
+{% endfor%}
+{% endblock %}

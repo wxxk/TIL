@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{%url 'ppap:update' ppap.pk%}" method="POST">
+  {% csrf_token %}
+  <!-- <label for="title">제목 : </label>
+  <input type="text" name="title" id="title" value="{{c.title}}">
+  <label for="content">내용 : </label>
+  <textarea name="content" id="content" cols="30" rows="10">{{c.content}}</textarea>
+  <input type="submit" value="글쓰기"> -->
+  {{ ppap_form.as_p }}
+  <input type="submit" value="글쓰기">
+</form>
+
+{% endblock %}
