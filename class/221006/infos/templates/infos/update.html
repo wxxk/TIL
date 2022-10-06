@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="container d-flex">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+<div class="container">
+  <form action="{% url 'infos:update' info.pk %}" method="POST">
+    {% csrf_token %}
+    {{ infos_form.as_p }}
+    <input type="submit" value="수정" class="btn btn-info text-white">
+  </form>
+</div>
+{% endblock%}

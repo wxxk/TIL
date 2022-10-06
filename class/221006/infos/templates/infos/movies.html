@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="d-flex justify-content-center m-5 ">
+  <img src="{% static 'images/title.jpg' %}" alt="">
+</div>
+
+<div class="containger m-5">
+  <table class="table table-info table-striped-columns text-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">제목</th>
+        <th scope="col">영화정보조회</th>
+        <th scope="col">수정</th>
+        <th scope="col">삭제</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {% for info in infos %}
+      <tr class="text-center">
+        <th scope="row">{{ info.pk }}</th>
+        <td><a href="{% url 'infos:detail' info.pk %}" class="text-decoration-none text-dark">{{ info.title }}</a></td>
+        <td><a href="{% url 'infos:detail' info.pk %}" class="text-decoration-none ">자세히</a></td>
+        <td><a href="{% url 'infos:update' info.pk %}" class="text-decoration-none text-dark">수정</a></td>
+        <td><a href="{% url 'infos:delete' info.pk %}" class="text-decoration-none text-dark">삭제</a></td>
+      </tr>
+      {% endfor%}
+    </tbody>
+  </table>
+</div>
+
+{% endblock%}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container p-5 d-flex justify-content-center">
+  <div class="card border" style="width: 20rem; height: 10rem;">
+    <img src="{% static 'images/movie.jpg' %}" class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title">{{ info.title }}</h5>
+      <p class="card-text">{{ info.summary }}</p>
+      <p class="card-text">상영시간 : {{ info.running_time }}</p>
+      <a href="{% url 'infos:delete' info.pk %}" class="btn btn-danger">삭제</a>
+      <a href="{% url 'infos:update' info.pk %}" class="btn btn-info text-white">수정</a>
+      <a href="{% url 'infos:movies' %}" class="btn btn-dark text-white">목록</a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock%}

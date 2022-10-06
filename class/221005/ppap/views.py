@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, render
-
 from .forms import ReviewForm
 from .models import Review
 

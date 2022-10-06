@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<br>
+<form action="{% url 'infos:create' %}" method="POST">
+  {% csrf_token %}
+  <div class="container">
+    {% bootstrap_form infos_form %}
+    <input type="submit" value="작성" class="btn btn-info text-white">
+  </div>
+</form>
+
+{% endblock%}
