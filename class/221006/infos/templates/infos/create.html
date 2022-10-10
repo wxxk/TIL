@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load django_bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+  {% load django_bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
 
-<br>
-<form action="{% url 'infos:create' %}" method="POST">
-  {% csrf_token %}
-  <div class="container">
-    {% bootstrap_form infos_form %}
-    <input type="submit" value="작성" class="btn btn-info text-white">
+  {% if request.resolver_match.url_name == "create" %}
+    <h1 class="mt-5 mb-3 fw-bold text-center">리뷰 작성</h1>
+  {% else %}
+    <h1 class="mt-5 mb-3 fw-bold text-center">리뷰 수정</h1>
+  {% endif %}
+
+  <div class="container col-8 py-3 border border-black rounded-3 position-relative">
+    <form action="" method="POST">
+      <div class="d-flex justify-content-end position-absolute" style="top:-50px; right:30px;">
+        <input type="submit" class="btn btn-outline-danger"/>
+      </div>
+      <div class="container">
+        {% csrf_token %}
+        {% bootstrap_form review_form %}
+      </div>
+    </form>
   </div>
-</form>
 
-{% endblock%}
+  {% endblock%}

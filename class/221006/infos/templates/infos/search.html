@@ -18,20 +18,20 @@
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        {% for info in infos %}
+        {% for a in aa %}
           <tr class="text-center">
-            <th scope="row">{{ info.pk }}</th>
+            <th scope="row">{{ a.pk }}</th>
             <td>
-              <a href="{% url 'infos:detail' info.pk %}" class="text-decoration-none text-dark">{{ info.title }}</a>
+              <a href="{% url 'infos:detail' a.pk %}" class="text-decoration-none text-dark">{{ a.title }}</a>
             </td>
             <td>
-              <a href="{% url 'infos:detail' info.pk %}" class="text-decoration-none ">자세히</a>
+              <a href="{% url 'infos:detail' a.pk %}" class="text-decoration-none ">자세히</a>
             </td>
             <td>
-              <a href="{% url 'infos:update' info.pk %}" class="text-decoration-none text-dark">수정</a>
+              <a href="{% url 'infos:update' a.pk %}" class="text-decoration-none text-dark">수정</a>
             </td>
             <td>
-              <a href="{% url 'infos:delete' info.pk %}" class="text-decoration-none text-dark">삭제</a>
+              <a href="{% url 'infos:delete' a.pk %}" class="text-decoration-none text-dark">삭제</a>
             </td>
           </tr>
           {% endfor%}

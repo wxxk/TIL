@@ -17,8 +17,15 @@
 
   <nav class="navbar bg-info">
     <div class="container-fluid m-3">
-      <a class="navbar-brand text-white" href="{% url 'infos:movies' %}">영화</a>
-      <a class="navbar-brand bg-white text-info btn" href="{% url 'infos:create' %}">작성</a></h3>
+      <div>
+        <a class="navbar-brand text-white" href="{% url 'infos:movies' %}">영화</a>
+        <a class="navbar-brand bg-white text-info btn" href="{% url 'infos:create' %}">작성</a></h3>
+      </div>
+      <form class="d-flex" Form method="GET" action="{% url 'infos:search' %}">  
+        <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
+        <button class="btn bg-white text-info" type="submit"> Search </button>
+
+    </form>
     </div>
   </nav>
 
