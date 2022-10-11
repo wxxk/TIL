@@ -58,7 +58,7 @@
 
 
 
-### [5. CRUE](# 5. CRUE)
+### [5. CRUD](# 5. CRUD)
 
 > Create / Read / Update / Delete
 
@@ -351,7 +351,7 @@ $ python manage.py migrate
 
 ---
 
-### 5. CRUE
+### 5. CRUD
 
 ##### Create
 
