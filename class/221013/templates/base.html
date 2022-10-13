@@ -15,6 +15,7 @@
     <nav class="navbar bg-light">
       <div class=" container-fluid">
         <a class="navbar-brnad text-decoration-none text-dark h3" href="{% url 'accounts:index' %}">HOME</a>
+        <a class='text-decoration-none' href="{% url 'articles:index' %}">게시물</a>
 
         {% if request.user.is_authenticated %}
           <div class="container mx-0 d-flex justify-content-end align-items-center">

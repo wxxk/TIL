@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.urls import is_valid_path
-from .forms import UsersForm
+from .forms import CustomUserChangeForm, UsersForm
 from .models import User
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 # 장고가 가지고 있는 로그인 폼을 가져온다.
 from django.contrib.auth.forms import AuthenticationForm
@@ -49,3 +50,16 @@ def login(request):
         "form": form,
     }
     return render(request, "accounts/login.html", context)
+
+
+@login_required
+def update(request):
+    if request.method == "POST":
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("accounts:detail", request.user.pk)
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    context = {"form": form}
+    return render(request, "accounts/update.html", context)

@@ -48,7 +48,10 @@ def update(request, pk):
             return redirect("infos:detail", info.pk)
     else:
         infos_form = InfosForm(instance=info)
-    context = {"infos_form": infos_form, "info": info}
+    context = {
+        "infos_form": infos_form,
+        "info": info,
+    }
     return render(request, "infos/update.html", context)
 
 

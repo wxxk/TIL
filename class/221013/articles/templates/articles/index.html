@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <h1>게시물</h1>
+  </div>
+
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">글 제목</th>
+          <th scope="col">자세히</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for article in articles %}
+          <tr>
+            <th scope="row">{{ article.pk }}</th>
+            <td>{{ article.title }}</td>
+            <td>
+              <a href="{% url 'articles:detail' article.pk %}">자세히</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a class="btn border border-dark" href="{% url 'articles:create' %}">글쓰기</a>
+  </div>
+{% endblock content %}

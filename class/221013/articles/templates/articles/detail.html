@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+  <div class="container border border-3 mt-5">
+    <h3 class="p-3">NO.{{article.pk}}</h3>
+    <div class="container">
+      <h5>{{article.title}}</h5>
+      <p class="pt-3">{{article.content}}</p>
+      <hr>
+      <p>만든 날짜:{{article.created_at}}</p>
+      <p>수정 날짜:{{article.updated_at}}</p>
+      <hr>
+      <a class='btn border border-1 border-dark mb-3' href="{% url 'articles:delete' article.pk %}">삭제</a>
+      <a class='btn border border-1 border-dark mb-3' href="{% url 'articles:update' article.pk %}">수정</a>
+    </div>
+  </div>
+  {% endblock%}

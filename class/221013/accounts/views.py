@@ -59,9 +59,9 @@ def logout(request):
 
 
 def detail(request, pk):
-    user = get_user_model().objects.get(pk=pk)
+    user_ = get_user_model().objects.get(pk=pk)
     context = {
-        "user": user,
+        "user_": user_,
     }
     return render(request, "accounts/detail.html", context)
 
