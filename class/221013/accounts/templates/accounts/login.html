@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+
+  <div class="container mt-5">
+    <h1>로그인</h1>
+    <form action="{% url 'accounts:login' %}" method="POST">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" value="로그인">
+    </form>
+  </div>
+
+{% endblock %}

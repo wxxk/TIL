@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <h1 class="text-center my-3">프로필 업데이트</h1>
+  <div class="container">
+    <form action="" method="POST">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <div class="container">
+        <button type='submit' class="btn border border-3 border-dark fw-bolder">OK</button>
+        {% comment %} <a class='btn' href="{% url 'accounts:delete' %}">탈퇴</a> {% endcomment %}
+      </div>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+  </head>
+
+  <body>
+    <nav class="navbar bg-light">
+      <div class=" container-fluid">
+        <a class="navbar-brnad text-decoration-none text-dark h3" href="{% url 'accounts:index' %}">HOME</a>
+
+        {% if request.user.is_authenticated %}
+          <div class="container mx-0 d-flex justify-content-end align-items-center">
+            <p class="m-3">{{ user }}님</p>
+            <form action="{% url 'accounts:logout' %}" class="m-3" method="POST">
+              {% csrf_token %}
+              <input class="btn" type="submit" value="로그아웃">
+            </form>
+            <a class="btn" href="{% url 'accounts:update' %}">회원정보 수정</a>
+            <a class="btn" href="{% url 'accounts:change_password' %}">비밀번호 수정</a>
+          </div>
+
+        {% else %}
+          <div class="container mx-0 d-flex justify-content-end">
+            <a class="nav-link mx-3" href="{% url 'accounts:login' %}">로그인</a>
+            <a class="nav-link mx-3" href="{% url 'accounts:signup' %}">회원가입</a>
+          </div>
+        {% endif %}
+      </div>
+
+    </nav>
+    {% block content %}{% endblock content %}
+  </body>
+
+</html>
