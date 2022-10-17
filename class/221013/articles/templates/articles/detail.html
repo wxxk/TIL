@@ -6,6 +6,9 @@
     <div class="container">
       <h5>{{article.title}}</h5>
       <p class="pt-3">{{article.content}}</p>
+      {% if article.image %}
+        <img src="{{ article.image.url }}" alt="{{ article.image }}" width="400" height="300">
+      {% endif %}
       <hr>
       <p>만든 날짜:{{article.created_at}}</p>
       <p>수정 날짜:{{article.updated_at}}</p>

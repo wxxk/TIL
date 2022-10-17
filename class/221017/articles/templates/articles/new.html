@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}new.html{% endblock title %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="container">
+    <h1 class="my-5 text-center">글 작성</h1>
+    <form action="" method='POST' enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" class="btn btn-info text-white">
+    </form>
+  </div>
+{% endblock content %}

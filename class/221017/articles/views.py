@@ -1,10 +1,7 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
 
 from articles.models import Article
 from .forms import ArticleForm
-
-from django.contrib import messages
 
 # Create your views here.
 
@@ -17,19 +14,17 @@ def index(request):
     return render(request, "articles/index.html", context)
 
 
-@login_required
 def create(request):
     form = ArticleForm(request.POST, request.FILES)
     if form.is_valid():
         form.save()
-        messages.success(request, "글 작성이 완료 되었습니다.")
         return redirect("articles:index")
     else:
         form = ArticleForm()
     context = {
         "form": form,
     }
-    return render(request, "articles/create.html", context)
+    return render(request, "articles/new.html", context)
 
 
 def detail(request, pk):
@@ -46,7 +41,6 @@ def update(request, pk):
         article_form = ArticleForm(request.POST, request.FILES, instance=article)
         if article_form.is_valid():
             article_form.save()
-
             return redirect("articles:detail", article.pk)
     else:
         article_form = ArticleForm(instance=article)
@@ -57,6 +51,6 @@ def update(request, pk):
     return render(request, "articles/update.html", context)
 
 
-def delete(request, pk):
+def delete(reqeust, pk):
     Article.objects.get(pk=pk).delete()
     return redirect("articles:index")

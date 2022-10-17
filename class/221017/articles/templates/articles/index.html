@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}index{% endblock title %}
+{% block content %}
+  <div class="container">
+    <h1 class="text-center my-5">글 목록</h1>
+
+    <div class="text-center">
+      <div class="row justify-content-center">
+        {% for article in articles %}
+          <div class="col-3 my-3">
+            <div class="card" style="width: 18rem;">
+              {% if article.thumbnail %}
+                <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="...">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">제목:{{ article.title }}</h5>
+                <p class="card-text">내용{{ article.content }}</p>
+                <a href="{% url 'articles:detail' article.pk %}" class="btn btn-info text-white">자세히</a>
+
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
