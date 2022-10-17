@@ -123,12 +123,6 @@
 
 
 
-### 6. Image
-
-- Pillow 라이브러리 설치 (ImageField 사용하기 위해서)
-
-
-
 ---
 
 ### 0. 용어정리
@@ -673,4 +667,6 @@ def delete(request, pk):
 </form>
 {% endblock content %}
 ```
+
+
 
