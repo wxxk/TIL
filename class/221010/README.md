@@ -56,6 +56,8 @@
 
 - [Migrations](# Migrations)
 
+- [ModelForm](#ModelForm)
+
 
 
 ### [5. CRUD](# 5. CRUD)
@@ -345,6 +347,41 @@ $ python manage.py migrate
 
 
 
+###### ModelForm
+
+- ModelForm 선언
+
+  - forms 라이브러리의 ModelForm 클래스를 상속받음
+
+  - 정의한 ModelForm 클래스 안에 Meta 클래스 선언
+
+  - 어떤 모델을 기반으로 form을 작성할 것인지에 대한 정보를 Meta 클래스에 지정
+
+- Meta Class
+
+  - ModelForm의 정보를 작성하는 곳
+
+  - ModelForm을 사용할 경우 참조 할 모델이 있어야하는데,
+
+    Meta class의 model 속성이 이를 구성함
+
+  - fields 속성에 `'__all__'`를 사용하여 모델의 모든 필드를 포함
+
+  - exclude 속성을 사용하여 모델에서 포함하지 않을 필드를 지정
+
+```python
+# articles/forms.py
+from django improt forms
+from .models import Article
+
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = "__all__"
+```
+
+
+
 
 
 ---
@@ -403,6 +440,28 @@ def create(request):
     article.save()
     
     return redirect('articles:detail', article.pk)
+
+
+
+# 3. Handling HTTp requests
+
+# new와 create view 함수를 함침
+# 각각의 역할은 request.method 값을 기준으로 나뉨
+# articles/views.py
+
+def create(request):
+    if reqeust.mehthod == "POST":
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            article = form.save()
+            return redirect('articles:detail', article.pk)
+        else:
+            form = ArticleForm()
+        context = {
+            'form': form,
+        }
+        return render(request, "articles/new.html", context)
+# 불필요해진 new의 view 함수와 url path를 삭제
 ```
 
 ```html
@@ -624,6 +683,29 @@ def update(request, pk):
 {% endblock content %}
 ```
 
+- ModelForm
+
+```python
+# edit과 update view 함수를 합침
+# edit의 view 함수와 url pathfmf 삭제
+
+# articles/views.py    
+def update(request, pk):
+    article = Article.objects.get(pk=pk)
+    if request.method == 'POST':
+	    form = ArticleForm(request.POST, instance=article)
+    	if form.is_valid():
+        	form.save()
+	        return redirect('articles:detail', article.pk)
+	else:
+        form = ArticleForm(instance=article)
+    context = {
+	    'form': form,
+    	'article': article,
+    }
+    return render(request, 'articles/update.html', context)
+```
+
 
 
 
@@ -658,6 +740,7 @@ def delete(request, pk):
 
 ```html
 <!-- articles/detail.html -->
+<!-- delelte버튼 생성-->
 
 {% extends 'base.html' %}
 {% block content %}
