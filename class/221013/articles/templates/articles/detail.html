@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 {% block content %}
   {% load static %}
   <div class="container border border-3 mt-5">
@@ -16,5 +17,23 @@
       <a class='btn border border-1 border-dark mb-3' href="{% url 'articles:delete' article.pk %}">삭제</a>
       <a class='btn border border-1 border-dark mb-3' href="{% url 'articles:update' article.pk %}">수정</a>
     </div>
+    <hr><br>
+    <div class="container">
+      <h3>댓글</h3>
+
+      <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form comment_form %}
+        <input type="submit">
+      </form>
+
+      <hr>
+      {% for comment in comments %}
+        <p>{{ comment.content }}</p>
+        {% empty %}
+        <p>댓글이 없어요 ㅠㅠ</p>
+      {% endfor %}
+    </div>
+
   </div>
   {% endblock%}

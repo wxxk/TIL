@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}index{% endblock title %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="container">
+    <h1>INDEX</h1>
+
+    <hr>
+
+    <a href="{% url 'articles:create' %}" class="btn btn-outline-primary mb-3">생성</a>
+    {% for article in articles %}
+      <div class="container border border-3 text-center my-3 p-3">
+
+        <h3 class="my-3">{{ article.pk }}.
+          {{ article.title }}</h3>
+        <a href="{% url 'articles:detail' article.pk %}" class="btn btn-outline-primary">자세히</a>
+      </div>
+    {% endfor %}
+  {% endblock content %}
+</div>

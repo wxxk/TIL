@@ -329,8 +329,8 @@ urlpatthers = [
 # articles/modes.py
 
 class Article(models.Model):
-    title = models.CharFiedl(max_lengt=10)
-    contnet = models.TextField()
+    title = models.CharFiedl(max_length=10)
+    content = models.TextField()
 # 모델 클래스 == 테이블 스키마
 # 각 모델은 django.db.models 모듈의 Model 클래스를 상속받아 구성됨
 ```

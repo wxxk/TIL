@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}create{% endblock title %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="container">
+    <h1>UPDATE</h1>
+    <hr>
+    <div class="container border border-3">
+      <form action="" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="btn btn-outline-primary">
+      </form>
+    </div>
+  </div>
+{% endblock content %}

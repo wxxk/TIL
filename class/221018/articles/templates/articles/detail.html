@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block title %}update{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <h1>DETAIL</h1>
+    <hr>
+    <div class="container border border-3 text-center p-3">
+      <h3>{{ article.title }}</h3>
+      <p>{{ article.content}}</p>
+      <a class="btn btn-outline-primary" href="{% url 'articles:delete' article.pk %}">DELETE</a>
+      <a class="btn btn-outline-primary" href="{% url 'articles:update' article.pk %}">UPDATE</a>
+    </div>
+    <hr>
+    <form action="{% url 'articles:comments_create' article.pk %}" method='POST'>
+      {% csrf_token %}
+      {% bootstrap_form comment_form %}
+      <input class="btn btn-outline-primary" type="submit">
+    </form>
+    <hr>
+    {% if comments %}
+      <p>
+        <b>{{ comments|length}}개의 댓글이 있습니다.</b>
+      </p>
+    {% endif %}
+
+    {% if article.comment_set.all %}
+      <p>
+        <b>{{ article.comment_set.all|length}}개의 댓글이 있습니다.</b>
+      </p>
+    {% endif %}
+
+    {% for comment in comments %}
+      <div class="container my-3">
+        <p>{{ comment.content }}</p>
+        <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" value="DELETE" class="btn btn-outline-primary">
+        </form>
+        <hr>
+      </div>
+      {% empty %}
+      <p>댓글이 없어요..</p>
+    {% endfor %}
+  {% endblock content %}
+
+</div>

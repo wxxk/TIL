@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block title %}create{% endblock title %}
+
+{% block content %}
+  {% load django_bootstrap5 %}
+  <div class="container">
+    <h1>CREATE</h1>
+    <hr>
+    <div class="container border border-3">
+      <form action="" method="POST" class="my-5">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="btn btn-outline-primary">
+        <a class="btn btn-outline-primary" href="{% url 'articles:index' %}">뒤로</a>
+      </form>
+    </div>
+  </div>
+{% endblock content %}
