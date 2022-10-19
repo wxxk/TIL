@@ -4,7 +4,11 @@
 {% block content %}
   <div class="container">
     <h1>INDEX</h1>
-
+    {% if request.user.is_authenticated %}
+      <h3>Hello,
+        <a href="{% url 'accounts:detail' user.id %}">{{ user }}</a>
+      </h3>
+    {% endif %}
     <hr>
 
     <a href="{% url 'articles:create' %}" class="btn btn-outline-primary mb-3">생성</a>
@@ -13,6 +17,8 @@
 
         <h3 class="my-3">{{ article.pk }}.
           {{ article.title }}</h3>
+        <h5>닉네임:
+          {{ article.user.username }}</h5>
         <a href="{% url 'articles:detail' article.pk %}" class="btn btn-outline-primary">자세히</a>
       </div>
     {% endfor %}

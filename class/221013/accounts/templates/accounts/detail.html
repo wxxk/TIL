@@ -12,6 +12,19 @@
         가입일 :
         {{ user_.date_joined }}
       </p>
+      <hr>
+      <p>작성한 글 :
+        {{ user.article_set.count }}개</p>
+
+      {% for article in user.article_set.all %}
+        <p>
+          <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
+        </p>
+      {% endfor %}
+
+      {% if request.user.pk == user_.pk %}
+        <a class='btn border border-3 border-dark fw-bolder mb-3' href="{% url 'accounts:delete' user_.pk %}">삭제</a>
+      {% endif %}
       <a href="{% url "accounts:index" %}" class='btn border border-3 border-dark fw-bolder mb-3'>홈으로</a>
     </div>
   </div>

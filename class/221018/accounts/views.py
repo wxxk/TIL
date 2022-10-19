@@ -1,41 +1,31 @@
-from django.shortcuts import redirect, render
-from .forms import CustomUserChangeForm, UsersForm
-from .models import User
-
-# 로그인
+from django.shortcuts import render, redirect
+from .forms import CustomUserChangeForm, CustomUserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from django.contrib.auth.forms import AuthenticationForm
-
-# detail
-from django.contrib.auth import get_user_model
-
-# update
+from .models import User
 from django.contrib.auth.decorators import login_required
-
-# change_paasword
-from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
+
+
 def index(request):
-    users = User.objects.all()
-    context = {
-        "users": users,
-    }
-    return render(request, "accounts/index.html", context)
+    return render(request, "accounts/index.html")
 
 
 def signup(request):
     if request.method == "POST":
-        form = UsersForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
-            return redirect("accounts:index")
+            return redirect("articles:index")
     else:
-        form = UsersForm()
-    context = {"form": form}
+        form = CustomUserCreationForm()
+    context = {
+        "form": form,
+    }
     return render(request, "accounts/signup.html", context)
 
 
@@ -44,12 +34,10 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect("accounts:index")
+            return redirect("articles:index")
     else:
         form = AuthenticationForm()
-    context = {
-        "form": form,
-    }
+    context = {"form": form}
     return render(request, "accounts/login.html", context)
 
 
@@ -58,10 +46,11 @@ def logout(request):
     return redirect("accounts:index")
 
 
+@login_required
 def detail(request, pk):
-    user_ = get_user_model().objects.get(pk=pk)
+    user_detail = User.objects.get(pk=pk)
     context = {
-        "user_": user_,
+        "user_detail": user_detail,
     }
     return render(request, "accounts/detail.html", context)
 
@@ -72,7 +61,7 @@ def update(request):
         form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect("accounts:detail", request.user.pk)
+            return redirect("articles:index")
     else:
         form = CustomUserChangeForm(instance=request.user)
     context = {
@@ -87,7 +76,7 @@ def change_password(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect("accounts:index")
+            return redirect("articles:index")
     else:
         form = PasswordChangeForm(request.user)
     context = {
@@ -96,12 +85,7 @@ def change_password(request):
     return render(request, "accounts/change_password.html", context)
 
 
-def delete(request, pk):
-    user = User.objects.get(pk=pk)
-    if request.user.pk == user.pk:
-        user.delete()
-        return redirect("accounts:index")
-    else:
-        from django.http import HttpResponseForbidden
-
-        return HttpResponseForbidden()
+def delete(request):
+    request.user.delete()
+    auth_logout(request)
+    return redirect("accounts/index")

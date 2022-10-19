@@ -8,9 +8,14 @@
     <hr>
     <div class="container border border-3 text-center p-3">
       <h3>{{ article.title }}</h3>
+      <h5>닉네임:
+        <a href="{% url 'accounts:detail' article.user.pk %}">{{ article.user.username }}</a>
+      </h5>
       <p>{{ article.content}}</p>
-      <a class="btn btn-outline-primary" href="{% url 'articles:delete' article.pk %}">DELETE</a>
-      <a class="btn btn-outline-primary" href="{% url 'articles:update' article.pk %}">UPDATE</a>
+      {% if request.user == article.user %}
+        <a class="btn btn-outline-primary" href="{% url 'articles:delete' article.pk %}">DELETE</a>
+        <a class="btn btn-outline-primary" href="{% url 'articles:update' article.pk %}">UPDATE</a>
+      {% endif %}
     </div>
     <hr>
     <form action="{% url 'articles:comments_create' article.pk %}" method='POST'>
@@ -25,19 +30,21 @@
       </p>
     {% endif %}
 
-    {% if article.comment_set.all %}
-      <p>
-        <b>{{ article.comment_set.all|length}}개의 댓글이 있습니다.</b>
-      </p>
-    {% endif %}
-
     {% for comment in comments %}
       <div class="container my-3">
-        <p>{{ comment.content }}</p>
-        <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
-          {% csrf_token %}
-          <input type="submit" value="DELETE" class="btn btn-outline-primary">
-        </form>
+        <p>{{ comment.user }}
+          :
+          {{ comment.content }}</p>
+        <p>{{comment.created_at}}
+          |
+          {{comment.updated_at}}</p>
+
+        {% if request.user == comment.user %}
+          <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="DELETE" class="btn btn-outline-primary">
+          </form>
+        {% endif %}
         <hr>
       </div>
       {% empty %}

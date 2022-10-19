@@ -10,6 +10,7 @@
         <tr>
           <th scope="col">No.</th>
           <th scope="col">글 제목</th>
+          <th scope="col">작성자</th>
           <th scope="col">자세히</th>
         </tr>
       </thead>
@@ -18,6 +19,7 @@
           <tr>
             <th scope="row">{{ article.pk }}</th>
             <td>{{ article.title }}</td>
+            <td>{{ article.user.username }}</td>
             <td>
               <a href="{% url 'articles:detail' article.pk %}">자세히</a>
             </td>

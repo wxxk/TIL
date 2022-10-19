@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  {% if request.user.is_authenticated %}
+    <h3>Hello,
+      {{user}}</h3>
+    <form action="{% url 'accounts:logout' %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="LOGOUT">
+    </form>
+    <a href="{% url 'accounts:update' %}">UPDATE</a>
+  {% else %}
+    <div class="container text-center">
+      <a href="{% url 'accounts:signup' %}">SINGUP</a>
+      <a href="{% url 'accounts:login' %}">LOGIN</a>
+    </div>
+  {% endif %}
+{% endblock content %}
