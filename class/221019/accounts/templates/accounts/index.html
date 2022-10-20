@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %} 
+{% block content %}
+
+<a href="{% url 'accounts:signup'%}">signup</a>
+<a href="{% url 'accounts:login'%}">login</a>
+
+{% endblock%}

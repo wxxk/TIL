@@ -1,31 +1,34 @@
 from django.shortcuts import render, redirect
-from .forms import CustomUserChangeForm, CustomUserCreationForm
+
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
+
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from .models import User
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import update_session_auth_hash
 
+from django.contrib.auth import get_user_model
+
+from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 
-
 def index(request):
-    return render(request, "accounts/index.html")
-
+    return render(request, 'accounts/index.html')
 
 def signup(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect("articles:index")
+            user = form.save()
+            auth_login(request, user)
+            return redirect('reviews:index')
     else:
         form = CustomUserCreationForm()
     context = {
-        "form": form,
+        'form': form,
     }
-    return render(request, "accounts/signup.html", context)
+    return render(request, 'accounts/signup.html', context)
 
 
 def login(request):
@@ -33,40 +36,36 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect("articles:index")
+            return redirect(request.GET.get('next') or 'reviews:index')
     else:
         form = AuthenticationForm()
-    context = {"form": form}
-    return render(request, "accounts/login.html", context)
-
+    context = {
+        'form': form
+    }
+    return render(request, 'accounts/login.html', context)
 
 def logout(request):
     auth_logout(request)
-    return redirect("accounts:index")
+    return redirect('reviews:index')
 
 
-@login_required
-def detail(request, pk):
-    user_detail = User.objects.get(pk=pk)
-    context = {
-        "user_detail": user_detail,
-    }
-    return render(request, "accounts/detail.html", context)
-
-
-@login_required
 def update(request):
     if request.method == "POST":
-        form = CustomUserChangeForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect("articles:index")
+        pass
     else:
         form = CustomUserChangeForm(instance=request.user)
-    context = {
-        "form": form,
+    context ={
+        'form': form,
     }
-    return render(request, "accounts/update.html", context)
+    return render(request, 'accounts/update.html', context)
+
+
+def detail(request, pk):
+    user_detail = get_user_model().objects.get(pk=pk)
+    context = {
+        'user_detail':user_detail,
+    }
+    return render(request, 'accounts/detail.html', context)
 
 
 def change_password(request):
@@ -83,8 +82,7 @@ def change_password(request):
     }
     return render(request, "accounts/change_password.html", context)
 
-
-def delete(request):
+def delete(request, pk):
     request.user.delete()
     auth_logout(request)
-    return redirect("accounts/index")
+    return redirect('accounts:index')

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+  <h1 class="text-center p-5">REVIEW</h1>
+  <div class="m-5 p-3 border border-3 border-dark rounded">
+    <p>MOVIE_NAME :
+      {{review.movie_name}}
+    </p>
+    <p>GRADE :
+      {% if review.grade == 5 %}
+        ⭐⭐⭐⭐⭐
+      {% elif review.grade == 4 %}
+        ⭐⭐⭐⭐
+      {% elif review.grade == 3 %}
+        ⭐⭐⭐
+      {% elif review.grade == 2 %}
+        ⭐⭐
+      {% elif review.grade == 1 %}
+        ⭐
+      {% endif %}
+    </p>
+    <h3>TITLE :
+      {{review.title}}</h3>
+      <h5>작성자 :
+        {{review.user}}</h5>
+    <hr>
+    <div class="m-2 p-2 border border-3 border-dark rounded">
+
+      <h5>CONTENT :
+        {{review.content}}</h5>
+    </div>
+    <p>
+      CREATE :
+      {{review.created_at}}
+      <br>
+      EDIT :
+      {{review.updated_at}}
+    </p>
+    <a class="btn btn-outline-dark" href="{% url 'reviews:delete' review.pk %}">
+      삭제
+    </a>
+    <a class="btn btn-outline-dark" href="{% url 'reviews:update' review.pk %}">
+      수정
+    </a>
+  </div>
+  
+  <div class="m-5 p-3 border border-3 border-dark rounded">
+    <form action="{% url 'reviews:comments_create' review.pk %}" method='POST'>
+      {% csrf_token %}
+      {% bootstrap_form comment_form %}
+      <input class="btn btn-outline-primary" type="submit">
+    </form>
+    <hr><br>
+    <p>댓글이 {{comments|length}}개 있습니다.</p>
+    <hr><br>
+    {% for comment in comments %}
+      <p>{{ comment.user }} : {{ comment.content}}</p>
+      {% if request.user == comment.user %}
+        <form action="{% url 'reviews:comments_delete' review.pk comment.pk %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" value="DELETE" class="btn btn-outline-primary">
+        </form>
+      {% endif %}
+      <hr>
+    {% empty %}
+      <p>댓글이 없어요..</p>
+    {% endfor %}
+  </div>
+{% endblock %}

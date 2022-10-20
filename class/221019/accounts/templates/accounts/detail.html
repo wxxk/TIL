@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block title %}detail{% endblock title %}
+{% block content %}
+  <div class="container">
+    <h1>상세정보</h1>
+
+    <hr>
+    <div class="container text-center">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">NO</th>
+            <th scope="col">ID</th>
+            <th scope="col">작성한 글</th>
+            <th scope="col">댓글</th>
+            <th scope="col">UPDATE</th>
+            <th scope="col">DLELETE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>{{ user_detail.id }}</th>
+            <td>{{ user_detail.username }}</td>
+            <td>{{ user_detail.article_set.count }}</td>
+            <td>{{ user_detail.comment_set.count }}</td>
+            <td>
+              {% if user.pk == user_detail.pk %}
+                <a class="btn btn-success" href="{% url 'accounts:update' %}">수정</a>
+              {% endif %}
+            </td>
+            <td>
+              {% if user.pk == user_detail.pk %}
+                <a class="btn btn-danger" href="{% url 'accounts:delete' user_detail.pk %}">삭제</a>
+              {% endif %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock content %}

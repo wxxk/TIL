@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %} 
+{% block content %}
+
+
+  <div class="container mt-3">
+    <h1>로그인</h1>
+  <form class="my-3" action="" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" class="btn border border-dark">
+  </form>
+</div>
+
+{% endblock%}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  {% load static %}
+  <div class="container col-6 my-5 d-flex flex-column">
+    <img src="{% static 'images/wooxxdii.png' %}" alt="" class="img-fluid my-5">
+
+    <form class="d-flex" role="search" action="{% url 'reviews:search' %}">
+      <div class="input-group mb-3">
+        <span class="input-group-text bg-white border border-end-0 rounded-end rounded-5" id="basic-addon1"><img src="{% static 'images/search.jpg' %}" alt="" style="width:32px; height:32px"></span>
+        <input class="form-control border border-start-0" type="search" placeholder="Search" name="search" aria-label="Search">
+        <button class="btn btn-outline-danger rounded-start rounded-5" type="submit">Search</button>
+      </div>
+    </form>
+
+  </div>
+  {% endblock%}
