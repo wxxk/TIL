@@ -1,1 +1,1 @@
-![1005](C:\Users\dwde2\Pictures\KDT\web\1005.png)
+![1005](README.assets/1005.png)

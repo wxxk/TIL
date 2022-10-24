@@ -1,1 +1,1 @@
-![bandicam-2022-10-24-22-45-14-696](C:\Users\dwde2\Downloads\bandicam-2022-10-24-22-45-14-696.gif)
+![bandicam-2022-10-24-22-45-14-696](README.assets/bandicam-2022-10-24-22-45-14-696.gif)
