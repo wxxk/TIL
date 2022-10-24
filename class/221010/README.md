@@ -125,6 +125,18 @@
 
 
 
+### [6. 검색](#6. 검색)
+
+- 검색 폼 만들기(name)
+- url 지정
+- views 정의
+
+
+
+### [7. Static](#7. Static)
+
+
+
 ---
 
 ### 0. 용어정리
@@ -752,4 +764,84 @@ def delete(request, pk):
 ```
 
 
+
+---
+
+### 6. 검색
+
+```html
+<!-- html에 검색 form 넣어주기 -->
+
+<!-- method="POST" action="{% url 'search' %}" -->
+<!-- name="search" : views함수에서 name으로 불러옴  -->
+
+<form class="d-flex" method="POST" action="{% url 'search' %}">
+	{% csrf_token %}        
+	<input class="form-control me-2" type="search" placeholder="Search" name="searched" aria-label="Search">
+	<button class="btn btn-outline-success" type="submit"> Search </button>
+</form>
+```
+
+```python
+# urls.py
+
+# path 지정
+path('reviews/search/', views.search, name='search'),
+
+
+
+# views.py
+from django.db.models import Q
+
+def search(request):
+    all_data = Review.objects.order_by("-pk")
+    search = request.GET.get("search", "")
+    if search:
+        search_list = all_data.filter(
+            Q(title__icontains=search) | Q(movie_name__icontains=search)
+        )
+
+        context = {
+            "search_list": search_list,
+        }
+    else:
+        context = {
+            "search_list": all_data,
+        }
+
+    return render(request, "reviews/search.html", context)
+```
+
+
+
+
+
+### 7. Static
+
+```python
+# settings.py
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+```
+
+```git
+$ python manage.py collectstatic
+```
+
+```html
+<!-- html -->
+
+<!-- 이미지 -->
+{% load static %}
+
+<img src="{% static 'images/images.jpg' %}" alt="images-img">
+
+
+<!-- css -->
+<head>
+    <link rel="stylesheet" href="{% static '/css/style.css'%}"
+</head>
+```
 
