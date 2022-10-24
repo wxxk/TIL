@@ -192,3 +192,8 @@ def update(request, pk):
     return render(request, 'articles/edit.html', context)
 ```
 
+---
+
+### 실습
+
+![1004](README.assets/1004.png)

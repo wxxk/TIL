@@ -1,21 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>게시판</h1>
+  <h1>게시판</h1>
 
-<ul>
-  {% for post in posts %}
-  <li>ID: {{post.id }} | 제목: {{ post.title }} | 내용: {{ post.content }}
-    <a href="">
-      [수정]
-    </a>/
-    <a href="/posts/delete/{{ post.id }}">
-      [삭제]
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+  <ul>
+    {% for post in posts %}
+      <li>ID:
+        {{post.id }}
+        | 제목:
+        {{ post.title }}
+        | 내용:
+        {{ post.content }}
+        <a href="">
+          [수정]
+        </a>/
+        <a href="/posts/delete/{{ post.id }}">
+          [삭제]
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 
-<a href="{% url 'posts:new' %}">새글쓰기</a>
+  <a href="{% url 'posts:new' %}">새글쓰기</a>
 
 {% endblock %}
