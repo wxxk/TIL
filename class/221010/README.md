@@ -796,19 +796,14 @@ from django.db.models import Q
 def search(request):
     all_data = Review.objects.order_by("-pk")
     search = request.GET.get("search", "")
-    if search:
-        search_list = all_data.filter(
-            Q(title__icontains=search) | Q(movie_name__icontains=search)
-        )
 
-        context = {
-            "search_list": search_list,
-        }
-    else:
-        context = {
-            "search_list": all_data,
-        }
+    search_list = all_data.filter(
+        Q(title__icontains=search) | Q(movie_name__icontains=search)
+    )
 
+    context = {
+        "search_list": search_list,
+    }
     return render(request, "reviews/search.html", context)
 ```
 

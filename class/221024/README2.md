@@ -77,3 +77,48 @@ def like(request, pk):
 {{ article.like_users.count }}
 ```
 
+
+
+
+
+---
+
+follow
+
+```python
+# path
+
+
+# views.py
+from 
+
+def follow(request, pk):
+    User = get_user_model().objects.get(pk=pk)
+    if request.user in user.followers.all()
+    	user.followers.remove(request.user)
+    else:
+        user.followers.add(request.user)
+    
+    return redirect('accounts:detail', pk)
+```
+
+```html
+{% if request.user%
+{{user.followings.count}}
+{{user.followers.count}}
+```
+
+
+
+
+
+- 팔로우 버튼
+
+```html
+<a href="{% url 'accounts'follow' user.pk %1}">팔로우</a>
+```
+
+
+
+
+

@@ -2,6 +2,28 @@
 
 {% block body %}
   <h1>{{ user.username }}님의 프로필</h1>
+
+  <div class="container">
+    <div class="container">
+      팔로잉 :
+      {{ user.followings.all.count }}
+      팔로워 :
+      {{ user.followers.all.count }}
+      {% if request.user != user %}
+        <div class="container">
+          <form action="{% url 'accounts:follow' user.pk %}" method="POST">
+            {% csrf_token %}
+            {% if request.user in user.followers.all %}
+              <input type="submit" value="Unfollow">
+            {% else %}
+              <input type="submit" value="follow">
+            {% endif %}
+          </form>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
   <p>{{ user.email }}
     |
     {{ user.full_name }}</p>
@@ -38,5 +60,6 @@
         </p>
       {% endfor %}
     </div>
+
   </div>
 {% endblock body %}
