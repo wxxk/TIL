@@ -10,17 +10,14 @@
 
   <!-- 좋아요 -->
   {% if request.user.is_authenticated %}
-    <a href="{% url 'articles:like' article.pk %}" class="text-decoration-none text-danger">
-
-      {% if request.user in article.like_users.all %}
-        <i class="bi bi-heart-fill"></i>
-      {% else %}
-        <i class="bi bi-heart"></i>
-      {% endif %}
-    </a>
+    {% if request.user in article.like_users.all %}
+      <i id="like-btn" data-article-id="{{article.pk}}" class="bi bi-heart-fill"></i>
+    {% else %}
+      <i id="like-btn" data-article-id="{{article.pk}}" class="bi bi-heart"></i>
+    {% endif %}
   {% endif %}
 
-  <span>[{{ article.like_users.count }}]</span>
+  <span id="like-count">{{ article.like_users.count }}</span>
 
   <!-- 생성/수정 일자-->
   <p>{{ article.created_at|date:"SHORT_DATETIME_FORMAT" }}
@@ -37,22 +34,100 @@
       <a href="{% url 'articles:update' article.pk %}">수정하기</a>
     </p>
   {% endif %}
+
+  <!-- 댓글 -->
   <h4 class="my-3">댓글</h4>
   {% if request.user.is_authenticated %}
-    <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+    <form id="comment-form" data-article-id="{{ article.pk }}">
       {% csrf_token %}
       {% bootstrap_form comment_form layout='inline'%}
       <input type="submit" value="OK" class="btn btn-primary btn-md">
     </form>
   {% endif %}
   <hr>
-  {% for comment in comments %}
-    <p>
-      {{ comment.user.username }}
-      |
-      {{ comment.content }}</p>
-    <hr>
-    {% empty %}
-    <p>댓글이 없어요 ㅠ_ㅠ</p>
-  {% endfor %}
+  <div id="comments">
+    {% for comment in comments %}
+      <p>
+        {{ comment.user.username }}
+        |
+        {{ comment.content }}</p>
+      <hr>
+      {% empty %}
+      <p>댓글이 없어요 ㅠ_ㅠ</p>
+    {% endfor %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    // (1) 좋아요 버튼
+    const likeBtn = document.querySelector('#like-btn')
+
+    // (2) 좋아요 버튼을 클릭하면, 함수 실행
+    likeBtn.addEventListener('click', function (event) {
+      // 서버로 비동기 요청을 하고 싶음
+      console.log(event.target.dataset)
+      axios({method: 'get', url: `/articles/${event.target.dataset.articleId}/like/`}).then(response => {
+        console.log(response)
+        console.log(response.data)
+        // event.target.classList.toggle('bi-heart')
+        // event.target.classList.toggle('bi-heart-fill')
+        if (response.data.idLiked === true) {
+          event
+            .target
+            .classList
+            .add('bi-heart-fill')
+          event
+            .target
+            .classList
+            .remove('bi-heart')
+        } else {
+          event
+            .target
+            .classList
+            .add('bi-heart')
+          event
+            .target
+            .classList
+            .remove('bi-heart-fill')
+        }
+        const likeCount = document.querySelector('#like-count')
+
+        likeCount.innerText = response.data.likeCount
+      })
+    })
+  </script>
+
+  <script>
+    // 댓글
+    // (!) 댓글 폼
+    const commentForm = document.querySelector('#comment-form')
+    // (2) 제풀하면, 함수를 실행
+
+    // csrf
+    const csrftoken = document
+      .querySelector('[name=csrfmiddlewaretoken]')
+      .value
+
+      commentForm
+      .addEventListener('submit', function () {
+        event.preventDefault();
+        axios({
+          method: 'post',
+          url: `/articles/${event.target.dataset.articleId}/comments/`,
+          headers: {
+            'X-CSRFToken': csrftoken
+          },
+          data: new FormData(commentForm) // 폼에 있는 정보를 data로 넘겨줄 수 있도록 변환
+        }).then(response => {
+          console.log(response.data)
+          // 댓글 추가 로직
+          const comments = document.querySelector('#comments')
+          const p = document.createElement('p')
+          p.innerText = `${response.data.userName} | ${response.data.content}`
+          const hr = document.createElement('hr')
+          comments.append(p, hr)
+          commentForm.reset()
+        })
+      })
+  </script>
 {% endblock %}

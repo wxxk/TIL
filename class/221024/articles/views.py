@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Article
 from .forms import ArticleForm, CommentForm
 
+from django.http import JsonResponse
+
 
 def index(request):
     articles = Article.objects.order_by("-pk")
@@ -68,7 +70,11 @@ def comment_create(request, pk):
         comment.article = article
         comment.user = request.user
         comment.save()
-    return redirect("articles:detail", article.pk)
+        context = {
+            "content": comment.content,
+            "userName": comment.user.username,
+        }
+    return JsonResponse(context)
 
 
 def like(request, pk):
@@ -77,9 +83,10 @@ def like(request, pk):
     # if article.like_users.filter(id=request.user.id).exists():
     if request.user in article.like_users.all():
         article.like_users.remove(request.user)
-
+        is_liked = False
     else:
         article.like_users.add(request.user)
-
+        is_liked = True
     # 상세 페이지로 redirect
-    return redirect("articles:detail", pk)
+    context = {"idLiked": is_liked, "likeCount": article.like_users.count()}
+    return JsonResponse(context)
