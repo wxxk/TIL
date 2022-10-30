@@ -102,13 +102,13 @@
 - ForeignKey() 클래스의 인스턴스 이름은 참조하는 모델 클래스 이름의 **단수형**으로 작성 권장
 
 ```python
-# articles/modes.py
+# articles/models.py
 
 class Comment(models.Model):
 	content = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    article models.ForeignKey(Article, on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
 ```
 
 ##### Migration
