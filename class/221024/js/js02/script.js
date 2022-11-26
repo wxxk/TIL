@@ -22,7 +22,7 @@ function checkGuess() {
     lastResult.style.backgroundColor = 'green';
     lowOrHi.textContent = '';
     setGameOver();
-  } else if (guessCount === 7) {
+  } else if (guessCount === 9) {
     lastResult.textContent = '!!!GAME OVER!!!';
     lowOrHi.textContent = '';
     setGameOver();
@@ -70,5 +70,5 @@ function resetGame() {
 
   lastResult.style.backgroundColor = 'white';
 
-  randomNumber = Math.floor(Math.random() * 100) + 1;
+  randomNumber = Math.floor(Math.random() * 1000) + 1;
 }

@@ -54,7 +54,7 @@
 | [10일](./class/221010/README.md)<br/>Django CRUD 정리 | [11일](./class/221011/README.md)<br/>Django_10  | [12일](./class/221012/221011/README.md)<br/>Django_11 | [13일](./class/221013/README.md)<br/>Django_12 | [14일](./class/221014/README.md)<br/>페어 프로젝트 |
 | [17일](./class/221017/README.md)<br/>Django_13        | [18일](./class/221018/README.md)<br/>Django_14  | [19일](./class/221019/README.md)<br/>Django_15        | [20일](./class/221020/README.md)<br/>Django_16 | [21일](./class/221021/README.md)<br/>페어 프로젝트 |
 | [24일](./class/221024/README.md)<br/>Django_17        | [25일](./class/221025/README2.md)<br/>Django_18 | [26일](./class/221026/)<br/>JS_비동기                 |                                                | [28일](./class/221028/)<br/>페어 프로젝트          |
-|                                                       |                                                 |                                                       |                                                |                                                    |
+| [29일](./class/221028/)<br/>페어 프로젝트             | [30일](./class/221028/)<br/>페어 프로젝트       | [31일](./class/221028/)<br/>페어 프로젝트             |                                                |                                                    |
 
 ---
 
