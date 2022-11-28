@@ -192,7 +192,7 @@ $ pip freeze > requirements.txt		# 패키지 목록 생성
 ###### 프로젝트 생성
 
 ```bash
-$ djagno-admin startproject pjt .	# djagno-admin startproject [프로젝트이름] .
+$ django-admin startproject pjt .	# djagno-admin startproject [프로젝트이름] .
 # .을 붙이지 않을 경우 현재 디렉토리에 프로젝트 디렉토리를 새로 생성(경로를 이동해서 실행)
 # Project이름에는 python이나 django에서 사용중인 키워드 및 '-' 사용 불가
 ```
