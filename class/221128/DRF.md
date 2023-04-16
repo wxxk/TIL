@@ -118,7 +118,7 @@ class Article(models.Model):
 # api/admin.py
 
 ...
-
+# admin.site.register(Article)
 
 @admin.register(Article)
 class ArticleModel(admin.ModelAdmin):
@@ -271,10 +271,13 @@ from .models import Article	# 추가
 from .serializers import ArticleSerializer	# 추가
 from django.http import JsonResonse	# 추가
 from rest_framework.parsers impoort JSONParser	# 추가
+from django.views.decorators.csrf import csrf_exempt	# 추가
+
 '''삭제
 def Index(request):
     return HttpResponse("It is working")'''
 
+@csrf_exempt
 def article_list(request):
 
     # get all articles
@@ -283,40 +286,480 @@ def article_list(request):
         serializer = Articleserializer(articles, many=True)
         return JsonResponse(serializer.data, safe=False)
     
-elif request.method == 'POST':
-    data = 
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = Articleserializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        JsonResponse(serializer.errors, status=400)
+```
+
+```python
+# api/urls.py
+
+from django.urls import path
+from .views import article_list	# 수정
+
+urlpatterns = [
+    path('articles/', article_list),	# 수정
+]
+```
+
+```python
+# api/views.py
+
+@csrf_exempt
+def article_details(request, pk):
+    try:
+        article = Article.objects.get(pk=pk)
+    
+    except Article.DoseNotExist:
+        return HttpResponse(status=404)
+    
+    if request.method == 'GET':
+        serializer =ArticleSerializer(article)
+        return JsonResponse(serializer.data)
+    
+    elif request.method == 'PUT'
+        data = JSONParser().parse(request)
+        serializer = Articleserializer(article, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        JsonResponse(serializer.errors)
+        
+    elif request.method == 'DELETE':
+        article.delete()
+        return HttpResponse(status=204)
+```
+
+```python
+# api/urls.py
+
+from django.urls import path
+from .views import article_list, article_details
+
+urlpatterns = [
+    path('articles/', article_list),
+    path('articles<int:pk>/', article_details),
+]
 ```
 
 
 
 
 
-##### API View Decorator
+### API View Decorator
+
+```python
+# api/views.py
+
+from django.shortcuts import render, HttpResponse
+from .models import Article
+from .serializers import ArticleSerializer
+from django.http import JsonResonse
+from rest_framework.parsers impoort JSONParser
+'''from django.views.decorators.csrf import csrf_exempt'''	# 삭제
+from rest_framework.decorator import api_view	# 추가
+from rest_framework.response import Response	# 추가
+from rest_framework import status	#추가
+
+'''@csrf_exempt'''	# 삭제
+@api_view(['GET', 'POST'])
+def article_list(request):
+
+    # get all articles
+    if requset.method == 'GET':
+        articles = Article.objects.all()
+        serializer = Articleserializer(articles, many=True)
+        # return JsonResponse(serializer.data, safe=False)
+        return Response(serializer.data)
+    
+    elif request.method == 'POST':
+        # data = JSONParser().parse(request)
+        serializer = Articleserializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTTP_201_CREATED)
+        JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        
+        
+# @csrf_exempt	삭제
+@api_view(['GET', 'PUT', 'DELETE'])
+def article_details(request, pk):
+    try:
+        article = Article.objects.get(pk=pk)
+    
+    except Article.DoseNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer =ArticleSerializer(article)
+        return Response(serializer.data)
+    
+    elif request.method == 'PUT'
+        # data = JSONParser().parse(request)
+        serializer = Articleserializer(article, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+    elif request.method == 'DELETE':
+        article.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+```
 
 
 
-##### Class Based API View
+
+
+### Class Based API View
+
+```python
+# api / views.py
+...
+from rest_framework.decorators import APIView
+
+
+class ArticleList(APIView):
+    
+	def get(self, request):
+        articles = Article.objects.all()
+        serializer = Articleserializer(articles, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        serializer = Articleserializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+    
+class ArticleDetails(APIView):
+    
+    def get_object(self, id):
+        try:
+        	return Article.objects.get(id=id)
+    
+    	except Article.DoseNotExist:
+        	return Response(status=status.HTTP_404_NOT_FOUND)
+        
+   def get(self, request, id):
+        article = self.get.object(id)
+        serializer = ArticleSerializer(articles)
+        return Response(serializer.data)
+    
+    
+    def put(self, request, id):
+        article = self.get.object(id)
+        serializer = ArticleSerializer(article, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+    def delete(self, request, id):
+        article = self.get.object(id)
+        article.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+```
+
+```python
+# api / urls.py
+from django.urls import path
+from .views import ArticleList
+# article_list, article_details
+
+urlpatterns = [
+    path('articles/', ArticleList.as_view()),
+    path('articles/<intLid>', ArticleDetails.as_view())
+    # path('articles/', article_list),
+    # path('articles<int:pk>/', article_details),
+]
+```
 
 
 
-##### Mixins
+
+
+### Mixins
+
+```python
+# api/views.py
+
+from rest_framwork generics
+from rest_framwork import mixins
+
+class ArticlesList(generics.GenericAPIView, mixins.ListModelMixin
+                  mixins.CreateModelMixin):
+    quertset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    
+    def get(self, request):
+        return self.list(request)
+    
+    def post(self, request):
+        return self.create(request)
+    
+    
+    
+class ArticleDetails(generics.GenericAPIView, mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin, mixins.DestroyModelMixin):
+    quertset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    
+    lookup_field = 'id'
+    
+    def get(self, request, id):
+        return self.retrieve(request, id=id)
+    
+    def put(self, request, id):
+        return self.update(request, id=id)
+    
+    def delete(self, request, id):
+        return self.destroy(request, id=id)
+```
 
 
 
-##### ViewSets and Routers
+
+
+### ViewSets and Routers
+
+```python
+# api/views.py
+
+from rest_framework import viewsets
+from django.shortcuts import get_object_or_404
+
+
+class ArticleViewSet(viewsets.ViewSet):
+    
+    def list(self, request):
+        articles = Article.objects.all()
+        serializer = ArticleSerializer(articles, many=True)
+        return Response(serializer.data)
+    
+    def create(self, request):
+        serializer = ArticleSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+    def retrieve(self, request, pk=None):
+        queryset = Article.objects.all()
+		article = get_object_or_404(queryset, pk=pk)
+        serializer = ArticleSerializer(article)
+        return Response(serializer.data)
+    
+    def update(self, request, pk=None):
+        article = Article.objects.get(pk=pk)
+        
+        serializer = ArticleSerializer(article, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def destroy(self, request, pk=None):
+        article = Article.objects.get(pk=pk)
+        article.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+```
+
+```python
+# api/urls.py
+
+from django.urls import path, include
+# from .views import ArticleList, ArticleDetails
+from .views import ArticleViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register('articles', ArticleViewSet, basename='articles')
+
+
+urlpatterns = [
+    path('', include(router.urls)),
+]
+```
 
 
 
-##### Generic Viewset
+
+
+### Generic Viewset
+
+```python
+# api/views.py
+
+class ArticleViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
+                    mixins.CreateModelMixin, mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin, mixinsDestroyModelMixin):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+```
 
 
 
-##### Model Viewset
+
+
+### Model Viewset
+
+```python
+# api/views.py
+
+from .models import Article
+from .serializers import ArticleSerializer
+from rest_framework import viewsets
+
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+```
 
 
 
-##### Authentication & Authorization
+
+
+### Authentication & Authorization
+
+```python
+# settings.py
+
+INSTALLED_APPS =[
+    ...
+    'rest_framework.authtoken'
+]
+
+REST_FRAMEWORK ={
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ]
+}
+```
+
+```bash
+$ python manage.py migrate
+```
+
+```python
+# pjt/urls.py
+
+...
+from rest_framework.authtoken.views import obtain_auth_token
+
+urlpatterns = [
+    ...
+    path('auth/', obtain_auth_token)
+]
+```
+
+```python
+# api/views.py
+
+from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = (TokenAuthentication,)
+```
 
 
 
-##### Registration
+### Registration
+
+```python
+# api/serializers.py
+...
+from django.contrib.auth.models import User
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = ['id', 'title', 'description']  
+
+        
+# 추가
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'password']
+```
+
+```python
+# api/views.py
+from .model import Article
+from .serializers import ArticleSerializer, UserSerializer
+from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
+
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = (TokenAuthentication,)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = user.objects.all()
+    serializer_class = UserSerializer
+```
+
+```python
+# api/urls.py
+
+from django.urls import path, include
+from .views import ArticleViewSet, UserViewSet
+from rest_framework.routers import DefaultRouter
+
+
+router = DefaultRouter()
+router.register('articles', ArticleViewSet, basename='articles')
+#추가
+router.register('users', UserViewSet)
+
+urlpatterns = [
+    path('api', include(router.urls)),
+]
+```
+
+```python
+# api/serializers.py
+...
+from rest_framework.authtoken.views import Token
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'password']
+        
+        # 추가
+        extra_kwargs = {'password':{
+            'write_only': True,
+            'required': True
+        }}
+        
+        
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        Token.objects.create(user=user)
+        return user
+```
+
