@@ -9,6 +9,7 @@ git pull
 git add .
 git commit -m "clean push"
 git push
+테스트
 ```
 
 - 기존 리포지토리 remote 제거
